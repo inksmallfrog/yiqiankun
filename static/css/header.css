@@ -1,0 +1,65 @@
+.header-container .header-background{
+    background-color: rgba(57, 57, 57, 0.8);
+    height: 52px;
+}
+.header-container .header{
+    background-color: rgba(11, 11, 11, 0.8);
+    height: 50px !important;
+}
+
+.header-container .header a.navbar-brand{
+    width: 25%;
+    min-width: 140px;
+    text-align: center;
+    letter-spacing: 6px;
+    font-family: "Slim Joe";
+    color: #fec303;
+}
+
+.header-container .header div.time-show{
+    display: inline-block;
+    line-height: 48px !important;
+    background-color: #0b0b0b;
+}
+
+div.time-show div.date{
+    display: inline-block;
+    padding-left: 20px;
+    padding-right: 20px;
+    font-size: 16px;
+    letter-spacing: 3px;
+    font-family: "Slim Joe";
+    color:white;
+}
+div.time-show div.time{
+    display: inline-block;
+    padding-left: 0;
+    padding-right: 20px;
+    font-size: 16px;
+    letter-spacing: 3px;
+    font-family: "Slim Joe";
+    color: #fec303;
+}
+
+.header-container .header a.user-status{
+    float:right;
+    padding: 10px 0;
+}
+
+.user-status img.user-avator{
+    width: 32px;
+}
+
+.header-container .header-underline{
+    background-color: #fec303;
+    top:50px;
+    height: 2px;
+    width: 0;
+}
+
+@media screen and (max-width: 768px){
+    div.brand-text-style{
+        font-size: 12px;
+    }
+}
+

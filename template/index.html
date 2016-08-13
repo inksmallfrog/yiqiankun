@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html lang="en" class="app">
+<head>
+<meta charset="utf-8" />
+<title>EasyQiankun</title>
+<meta name="description" content="app, web app, responsive, admin dashboard, admin, flat, flat ui, ui kit, off screen nav" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+<link rel="stylesheet" href="../static/css/app.v2.css" type="text/css" />
+<link rel="stylesheet" href="../static/css/combo.select.css" type="text/css">
+
+<link rel="stylesheet" href="../static/css/fonts.css" type="text/css" />
+<link rel="stylesheet" href="../static/css/global.css" type="text/css" />
+<link rel="stylesheet" href="../static/css/header.css" type="text/css" cache="false" />
+<link rel="stylesheet" href="../static/css/top_picture.css" type="text/css" cache="false" />
+<link rel="stylesheet" href="../static/css/dialog.css" type="text/css" cache="false" />
+<link rel="stylesheet" href="../static/css/stock.css" type="text/css" cache="false" />
+<link rel="stylesheet" href="../static/css/selfstock.css" type="text/css" cache="false" />
+<link rel="stylesheet" href="../static/css/detailstock.css" type="text/css" cache="false" />
+</head>
+
+<body>
+<section class="vbox">
+  <!--导航栏-->
+  <div class="header-container">
+    <div class="header-background navbar-fixed-top"></div>
+    <header class="header navbar-fixed-top">
+      <!--商标-->
+      <a href="./index.html" class="navbar-brand hide-tiny">Alpha</a>
+      <!--END商标-->
+
+      <!--时间条-->
+      <div class="time-show navbar-brand">
+          <div class="date">1900/01/01</div>
+          <div class="time">00:00</div>
+      </div>
+      <!--END时间条-->
+
+      <!--登录头像-->
+      <a href="#" class="user-status"><img src="../static/assets/icons/unlogged.png" class="user-avator"></a>
+      <!--END登录头像-->
+    </header>
+    <div class="header-underline navbar-fixed-top"></div>
+  </div>
+  <!--End 导航栏-->
+
+  <!--页面区域-->
+  <section class="scrollable slimScrollBar">
+      <!--顶部图片-->
+      <section class="top-section">
+        <div class="top-picture">
+          <img id="k-line" src="../static/assets/img/top_kline.png" class="hidden-xs">
+          <img id="img" src="../static/assets/img/top_img.png">
+        </div>
+      </section>
+      <!--End 顶部图片-->
+
+      <!--股票信息栏-->
+      <div class="stock">
+          <!--自选股模块-->
+          <div class="selfstock-panel">
+             <div class="selfstcok-container">
+                <div class="selfstock-box">
+                    <div class="panel-title">我的自选股</div>
+                    <ul class="selfstock-list scrollable slimScrollBar">
+
+                    </ul>
+
+                </div>
+             </div>
+          </div>
+          <!--END自选股模块-->
+
+          <!--股票信息模块-->
+          <div class="stockdetail-panel">
+              <!--搜索-->
+              <div class="search-box">
+                  <div class="stocklist-select-box">
+                      <select class="stocklist-select"><option value="" disabled selected>请输入股票名称或代码</option></select>
+                  </div>
+                  <button>搜索</button>
+              </div>
+              <!--END搜索-->
+
+              <!--信息盒-->
+              <div class="stockdetail-box">
+                  <div class="detail-left">
+                      <div class="detail-name">浦发银行(600000)</div>
+                      <div class="detail-price price-up">15.83<img id="price-arrow" src="../static/assets/icons/price_up.png"></div>
+                      <div class="detail-updown price-up"><span class="updown">+0.04</span><span class="scale">+0.25%</span></div>
+                  </div>
+                  <div class="detail-right">
+                      <div class="detail-layer">
+                          <div class="detail-box">
+                              <div class="detail-title">今开</div>
+                              <div class="detail-value price-up" id="open">15.80</div>
+                          </div>
+                          <div class="detail-box">
+                              <div class="detail-title">最高</div>
+                              <div class="detail-value price-up" id="high">15.84</div>
+                          </div>
+                          <div class="detail-box">
+                              <div class="detail-title">涨停</div>
+                              <div class="detail-value price-up" id="max">17.37</div>
+                          </div>
+                          <div class="detail-box hidden-xs">
+                              <div class="detail-title">总量</div>
+                              <div class="detail-value" id="vol">8.44<span class="unit" id="vol-unit">万手</span></div>
+                          </div>
+                          <div class="detail-box hidden-xs">
+                              <div class="detail-title">市值</div>
+                              <div class="detail-value" id="marketvalue">3422.17<span class="unit" id="marketvalue-unit">亿</span></div>
+                          </div>
+                      </div>
+                      <div class="detail-layer">
+                          <div class="detail-box">
+                              <div class="detail-title">昨收</div>
+                              <div class="detail-value" id="close">15.79</div>
+                          </div>
+                          <div class="detail-box">
+                              <div class="detail-title">最低</div>
+                              <div class="detail-value price-down" id="low">15.73</div>
+                          </div>
+                          <div class="detail-box">
+                              <div class="detail-title">跌停</div>
+                              <div class="detail-value price-down" id="min">14.21</div>
+                          </div>
+                          <div class="detail-box hidden-md">
+                              <div class="detail-title">总额</div>
+                              <div class="detail-value" id="value">1.33<span class="unit" id="value-unit">亿元</span></div>
+                          </div>
+                          <div class="detail-box hidden-md">
+                              <div class="detail-title ">流通市值</div>
+                              <div class="detail-value" id="availablemarketvalue">3248.13<span class="unit" id="availablemarketvalue-unit">亿</span></div>
+                          </div>
+                      </div>
+                  </div>
+                  <a class="selfstock-selector" href="#">
+                      加入自选股+
+                  </a>
+              </div>
+              <!--END信息盒-->
+
+              <!--图形-->
+              <div class="graph-box" id="stock-graph"></div>
+              <!--END图形-->
+
+              <!--图形类型-->
+              <div class="graph-type">
+                  <ul class="graph-header-test">
+                      <li><a href="javascript:void(0)" class="graph-type-selector current" id="graph-daily">日K</a> </li>
+                      <li><a href="javascript:void(0)" class="graph-type-selector" id="graph-weekly">周K</a> </li>
+                      <li><a href="javascript:void(0)" class="graph-type-selector" id="graph-monthly">月K</a> </li>
+                      <li><a href="javascript:void(0)" class="graph-type-selector" id="graph-time">分时</a> </li>
+                  </ul>
+              </div>
+              <!--END图形类型-->
+          </div>
+          <!--END股票信息模块-->
+      </div>
+      <!--END股票信息栏-->
+
+      <!--交易栏-->
+      <div class="trade">
+          <!--交易模块-->
+          <div class="trade-panel">
+
+          </div>
+          <!--END交易模块-->
+
+          <!--订单模块-->
+          <div class="orderdetail-panel">
+
+          </div>
+          <!--END订单模块-->
+      </div>
+      <!--END交易栏-->
+  </section>
+  <!--End 页面区域-->
+</section>
+
+<!--登录注册窗口-->
+<div class="modal fade login-register-dialog" id="login-register" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="dialog-with-border">
+                <div class="border" id="dialog-top"></div>
+                <div class="border" id="dialog-bottom"></div>
+                <div class="border" id="dialog-right"></div>
+                <button class="dialog-close" data-dismiss="modal"></button>
+                <div class="dialog-container">
+                    <div class="title">登录</div>
+                    <form class="login-form" id="login-signup-form" onsubmit="return account.login()" method="post">
+                        <div class="login left">
+                            <div class="form-text">用户名/email/手机号码</div>
+                            <input type="text" name="user_id" id="user_id_input">
+                            <div class="temp-hide error-tip" id="user_id_error">
+                                <div class="error-tip-triangle"></div>
+                                <div class="error-tip-content" id="user_id_error_content"></div>
+                            </div>
+                            <div class="form-text">密码</div>
+                            <input type="password" name="pwd" id="pwd_input">
+                            <div class="temp-hide error-tip" id="pwd_error">
+                                <div class="error-tip-triangle"></div>
+                                <div class="error-tip-content" id="pwd_error_content"></div>
+                            </div>
+                            <a href="#" class="form-link">忘记密码？</a>
+                            <input class="hide" name="action" type="text" id="action_type">
+                            <button type="submit" class="tiny-left" onclick="setAction('login')">登录</button>
+                            <button type="submit" class="show-tiny tiny-right" onclick="setAction('signup')">注册</button>
+                        </div>
+                        <div class="seperate-line hide-tiny"></div>
+                        <div class="register left hide-tiny">
+                            <img src="../static/assets/icons/brand.png">
+                            <div class="brand-text">加入我们！</div>
+                            <div class="brand-text">每月超高收益率</div>
+                            <div class="brand-text">等你参与！</div>
+                            <button type="submit" onclick="setAction('signup')">注册</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End 登录注册窗口-->
+<script src="../static/js/thirdParty/echarts.js"></script>
+<script src="../static/js/thirdParty/app.v2.js"></script> <!-- Bootstrap -->  <!-- App --> <script src="../static/js/charts/easypiechart/jquery.easy-pie-chart.js" cache="false"></script> <script src="../static/js/charts/sparkline/jquery.sparkline.min.js" cache="false"></script> <script src="../static/js/charts/flot/jquery.flot.min.js" cache="false"></script> <script src="../static/js/charts/flot/jquery.flot.tooltip.min.js" cache="false"></script> <script src="../static/js/charts/flot/jquery.flot.resize.js" cache="false"></script> <script src="../static/js/charts/flot/jquery.flot.grow.js" cache="false"></script> <script src="../static/js/charts/flot/demo.js" cache="false"></script> <script src="../static/js/calendar/bootstrap_calendar.js" cache="false"></script> <script src="../static/js/calendar/demo.js" cache="false"></script> <script src="../static/js/sortable/jquery.sortable.js" cache="false"></script>
+<script src="../static/js/thirdParty/jquery.cookie.js"></script>
+<script src="../static/js/thirdParty/jquery.form.js"></script>
+<script src="../static/js/thirdParty/jquery.tablesorter.js"></script>
+<script src="../static/js/thirdParty/jquery.combo.select.js"></script>
+
+<script src="../static/js/test/stocklist.js"></script>
+
+<script src="../static/js/template.js"></script>
+<script src="../static/js/config.js"></script>
+<script src="../static/js/Account.js"></script>
+<script src="../static/js/Header.js"></script>
+
+<script src="../static/js/SelfStock.js"></script>
+
+<script src="../static/js/Stock.js"></script>
+<script src="../static/js/StockGraph.js"></script>
+<script src="../static/js/StockDetail.js"></script>
+
+<script src="../static/js/global.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+    "id": "000001SH",
+    "code": "000001",
+    "name": "上证指数",
+    "abbr": "SZZS",
+    "price": 3000.00,
+    "open": 2932.13,
+    "close": 2930.22,
+    "high": 3000.00,
+    "low": 2922.15,
+    "max": 4000.00,
+    "min": 2000.00,
+    "vol": 300000000,
+    "value": 3000000000,
+    "marketvalue": 0,
+    "available_marketvalue": 0
+}

@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+}
+
+a{
+    text-underline: none;
+}
+
+li{
+    list-style: none;
+}
+
+.temp-hide{
+    display: none;
+}
+
+.show-tiny{
+    display: none !important;
+}
+
+div.border{
+    background-color: #fec303;
+}
+
+.price-up{
+    color: #c33430 !important;
+}
+
+.price-down{
+    color: #37c330 !important;
+}
+
+@media screen and (max-width: 768px){
+    .slimScrollBar{
+        display: inherit !important;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .hide-tiny{
+        display: none;
+    }
+    .show-tiny{
+        display: inherit !important;
+    }
+}
