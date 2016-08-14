@@ -4,7 +4,6 @@
  */
 function StockGraph(){
     this.stock_chart = echarts.init(document.getElementById("stock-graph"));        //股票图表
-    this.stock = new Stock();                                                       //股票对象
 }
 
 StockGraph.prototype.init = function(){
@@ -45,7 +44,7 @@ StockGraph.prototype.drawGraph = function(){
         legend: {
             bottom: 0,
             padding: 10,
-            data: [this.stock.name, 'MA5', 'MA10', 'MA20', 'MA30']
+            data: [stock.name, 'MA5', 'MA10', 'MA20', 'MA30']
         },
         grid: {
             top: '2%',
@@ -56,7 +55,7 @@ StockGraph.prototype.drawGraph = function(){
         },
         xAxis: {
             type: 'category',
-            data: this.stock.current_data.categoryData,
+            data: stock.current_data.categoryData,
             scale: true,
             boundaryGap : false,
             axisLine: {onZero: false},
@@ -88,14 +87,14 @@ StockGraph.prototype.drawGraph = function(){
         ],
         series: [
             {
-                name: this.stock.name,
+                name: stock.name,
                 type: 'candlestick',
-                data: this.stock.current_data.values
+                data: stock.current_data.values
             },
             {
                 name: 'MA5',
                 type: 'line',
-                data: this.stock.calculateMA(5),
+                data: stock.calculateMA(5),
                 smooth: true,
                 lineStyle: {
                     normal: {opacity: 0.5}
@@ -104,7 +103,7 @@ StockGraph.prototype.drawGraph = function(){
             {
                 name: 'MA10',
                 type: 'line',
-                data: this.stock.calculateMA(10),
+                data: stock.calculateMA(10),
                 smooth: true,
                 lineStyle: {
                     normal: {opacity: 0.5}
@@ -113,7 +112,7 @@ StockGraph.prototype.drawGraph = function(){
             {
                 name: 'MA20',
                 type: 'line',
-                data: this.stock.calculateMA(20),
+                data: stock.calculateMA(20),
                 smooth: true,
                 lineStyle: {
                     normal: {opacity: 0.5}
@@ -122,7 +121,7 @@ StockGraph.prototype.drawGraph = function(){
             {
                 name: 'MA30',
                 type: 'line',
-                data: this.stock.calculateMA(30),
+                data: stock.calculateMA(30),
                 smooth: true,
                 lineStyle: {
                     normal: {opacity: 0.5}

@@ -20,8 +20,97 @@ function Stock(){
     this.marketvalue;       //市值
     this.available_marketvalue;     //流动市值
 
+    this.bid5;
+    this.bid5vol;
+    this.bid4;
+    this.bid4vol;
+    this.bid3;
+    this.bid3vol;
+    this.bid2;
+    this.bid2vol;
+    this.bid1;
+    this.bid1vol;
+    this.buy1;
+    this.buy1vol;
+    this.buy2;
+    this.buy2vol;
+    this.buy3;
+    this.buy3vol;
+    this.buy4;
+    this.buy4vol;
+    this.buy5;
+    this.buy5vol;
+
     this.current_data;              //图表数据
 }
+
+Stock.prototype.init = function(){
+};
+
+Stock.prototype.update = function(){
+    this.updateDetail();
+
+    if(stock_detail.graph_type == "graph-time"){
+        this.updateGraphData();
+    }
+};
+
+Stock.prototype.changeStock = function(id){
+    this.id = id;
+    this.updateDetail();
+    this.updateGraphData();
+};
+
+Stock.prototype.updateDetail = function(){
+    /*
+     * 发送股票详情请求
+     * 发送目标：{root}/getstockdata
+     * 发送方式：post
+     * 发送内容：id => 股票id
+     * 返回格式：json
+     * 期待返回内容：id => 股票id
+     *               code => 股票代码
+     *               name => 股票名称
+     *               abbr => 股票缩写
+     *               price => 当前价格
+     *               open => 开盘价
+     *               close => 收盘价
+     *               high => 最高价
+     *               low => 最低价
+     *               max => 涨停价
+     *               min => 跌停价
+     *               vol => 总量
+     *               value => 总额
+     *               marketvalue => 市值
+     *               available_marketvalue => 流通市值
+     *               bid5 => 卖5
+     *               bid5vol => 卖5量
+     *               bid4 => 卖4
+     *               bid4vol => 卖4量
+     *               bid3 => 卖3
+     *               bid3vol => 卖3量
+     *               bid2 => 卖2
+     *               bid2vol => 卖2量
+     *               bid1 => 卖1
+     *               bid1vol => 卖1 量
+     *               buy1 => 买1
+     *               buy1vol => 买1量
+     *               buy2 => 买2
+     *               buy2vol => 买2量
+     *               buy3 => 买3
+     *               buy3vol => 买3量
+     *               buy4 => 买4
+     *               buy4vol => 买4量
+     *               buy5 => 买5
+     *               buy5vol => 买5量
+     */
+    var stock = this;
+    $.post("../getstockdata", {id: this.id}, function(data){
+        stock.readDetail(data);
+        stock_detail.update();
+        trade.update();
+    }, "json");
+};
 
 //从json数据中绑定数据
 Stock.prototype.readDetail = function(data){
@@ -41,6 +130,43 @@ Stock.prototype.readDetail = function(data){
     this.value = data.value;
     this.marketvalue = data.marketvalue;
     this.available_marketvalue = data.available_marketvalue;
+    this.bid5 = data.bid5;
+    this.bid5vol = data.bid5vol;
+    this.bid4 = data.bid4;
+    this.bid4vol = data.bid4vol;
+    this.bid3 = data.bid3;
+    this.bid3vol = data.bid3vol;
+    this.bid2 = data.bid2;
+    this.bid2vol = data.bid2vol;
+    this.bid1 = data.bid1;
+    this.bid1vol = data.bid1vol;
+    this.buy1 = data.buy1;
+    this.buy1vol = data.buy1vol;
+    this.buy2 = data.buy2;
+    this.buy2vol = data.buy2vol;
+    this.buy3 = data.buy3;
+    this.buy3vol = data.buy3vol;
+    this.buy4 = data.buy4;
+    this.buy4vol = data.buy4vol;
+    this.buy5 = data.buy5;
+    this.buy5vol = data.buy5vol;
+};
+
+Stock.prototype.updateGraphData = function(){
+    /*
+     * 发送股票图表请求
+     * 发送目标：{root}/getstockgraphdata
+     * 发送方式：post
+     * 发送内容：id => 股票id
+     *           type => 图表类型('graph-daily' => 日线; 'graph-weekly' => 周线; 'graph-monthly' => 月线'; 'graph-time' => '分时图')
+     * 返回格式：二维数组
+     * 期待返回内容：[时间，开盘，收盘，最低，最高]
+     */
+    var stock = this;
+    $.post("../getstockgraphdata", {id: this.id, type: stock_detail.graph_type}, function(data){
+        stock.readGraphData(data);
+        stock_detail.updateGraph();
+    });
 };
 
 //从数组中获取图表数据

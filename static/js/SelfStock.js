@@ -66,7 +66,7 @@ SelfStock.prototype.bindData = function(){
     var selfstock = this;
 
     $(".selfstock-item-detail").click(function(){
-       stock_detail.changeStock($(this).attr("data"));
+       stock.changeStock($(this).attr("data"));
     });
 
     $(".delete-icon").click(function(){

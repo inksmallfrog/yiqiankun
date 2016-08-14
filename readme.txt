@@ -1,7 +1,7 @@
 TodoList:
-	注册功能没做
-	登出功能直接点头像
-	交易模块
+	注册功能
+	登出功能（暂时为直接点头像登出）
+	分时图
 	订单模块
 	账户管理模块
 	策略模块
@@ -69,36 +69,56 @@ TodoList:
 
 		e、获取股票实时数据
 			触发：进入网页后，每隔固定时间后自动触发
-			前端位置：StockDetail.js line:98
+			前端位置：Stock.js line:65
     			/*
-     			* 发送股票详情请求
-     			* 发送目标：{root}/getstockdata
-     			* 发送方式：post
-     			* 发送内容：id => 股票id
-     			* 返回格式：json
-     			* 期待返回内容：id => 股票id
-     			*               code => 股票代码
-     			*               name => 股票名称
-     			*               abbr => 股票缩写
-     			*               price => 当前价格
-     			*               open => 开盘价
-     			*               close => 收盘价
-     			*               high => 最高价
-     			*               low => 最低价
-     			*               max => 涨停价
-     			*               min => 跌停价
-     			*               vol => 总量
-     			*               value => 总额
-     			*               marketvalue => 市值
-     			*               available_marketvalue => 流通市值
-     			*/
+                 * 发送股票详情请求
+                 * 发送目标：{root}/getstockdata
+                 * 发送方式：post
+                 * 发送内容：id => 股票id
+                 * 返回格式：json
+                 * 期待返回内容：id => 股票id
+                 *               code => 股票代码
+                 *               name => 股票名称
+                 *               abbr => 股票缩写
+                 *               price => 当前价格
+                 *               open => 开盘价
+                 *               close => 收盘价
+                 *               high => 最高价
+                 *               low => 最低价
+                 *               max => 涨停价
+                 *               min => 跌停价
+                 *               vol => 总量
+                 *               value => 总额
+                 *               marketvalue => 市值
+                 *               available_marketvalue => 流通市值
+                 *               bid5 => 卖5
+                 *               bid5vol => 卖5量
+                 *               bid4 => 卖4
+                 *               bid4vol => 卖4量
+                 *               bid3 => 卖3
+                 *               bid3vol => 卖3量
+                 *               bid2 => 卖2
+                 *               bid2vol => 卖2量
+                 *               bid1 => 卖1
+                 *               bid1vol => 卖1 量
+                 *               buy1 => 买1
+                 *               buy1vol => 买1量
+                 *               buy2 => 买2
+                 *               buy2vol => 买2量
+                 *               buy3 => 买3
+                 *               buy3vol => 买3量
+                 *               buy4 => 买4
+                 *               buy4vol => 买4量
+                 *               buy5 => 买5
+                 *               buy5vol => 买5量
+                 */
 			结果：数据显示在相应的位置
 
 		f、获取股票图表数据
 			触发：进入网页后
 			      修改图标类型时
-		              分时图每隔固定时间后自动触发
-			前端位置：StockDetail.js line:129
+		          分时图每隔固定时间后自动触发
+			前端位置：Stock.js line:156
     			/*
      			* 发送股票图表请求
      			* 发送目标：{root}/getstockgraphdata
@@ -109,3 +129,35 @@ TodoList:
      			* 期待返回内容：[时间，开盘，收盘，最低，最高]
      			*/
 			结果：图表中显示正确的数据
+
+		g、买入操作
+		    触发：用户点击买入按钮
+		    前端位置：Trade.js line:111
+		        /*
+                 * 发送买入请求
+                 * 发送目标：{root}/trade
+                 * 发送方式：post
+                 * 发送内容：user_id => 用户id
+                 *           id => 股票id
+                 *           price => 价格
+                 *           counts => 数量
+                 *           type => 执行动作("buy" => 买入, "bid" => 卖出)
+                 * 返回：无
+                 */
+            结果：买入请求加入订单数据库
+
+        h、卖出操作
+            触发：用户点击卖出按钮
+            前端位置：Trade.js line:126
+                /*
+                 * 发送买入请求
+                 * 发送目标：{root}/trade
+                 * 发送方式：post
+                 * 发送内容：user_id => 用户id
+                 *           id => 股票id
+                 *           price => 价格
+                 *           counts => 数量
+                 *           type => 执行动作("buy" => 买入, "bid" => 卖出)
+                 * 返回：无
+                 */
+            结果：卖出请求加入订单数据库

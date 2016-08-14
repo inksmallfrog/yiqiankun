@@ -29,3 +29,22 @@ Date.prototype.format =function(format)
                 ("00"+ o[k]).substr((""+ o[k]).length));
     return format;
 };
+
+//设置颜色
+setTextColor = function(node, price, close){
+    var is_up = 0;
+    if(price > close){
+        is_up = 1;
+    }
+    else if(price < close){
+        is_up = -1;
+    }
+    node.removeClass("price-up");
+    node.removeClass("price-down");
+    if(is_up == 1){
+        node.addClass("price-up");
+    }
+    else if(is_up == -1){
+        node.addClass("price-down");
+    }
+};

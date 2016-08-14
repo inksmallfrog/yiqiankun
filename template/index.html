@@ -16,6 +16,7 @@
 <link rel="stylesheet" href="../static/css/stock.css" type="text/css" cache="false" />
 <link rel="stylesheet" href="../static/css/selfstock.css" type="text/css" cache="false" />
 <link rel="stylesheet" href="../static/css/detailstock.css" type="text/css" cache="false" />
+<link rel="stylesheet" href="../static/css/trade.css" type="text/css" cache="false" />
 </head>
 
 <body>
@@ -163,7 +164,46 @@
       <div class="trade">
           <!--交易模块-->
           <div class="trade-panel">
-
+            <div class="trade-container">
+                <div class="trade-container-left">
+                    <div class="stock-info trade-box-with-border">
+                        <div class="stock-info-code"></div>
+                        <div class="stock-info-name"></div>
+                    </div>
+                    <div class="trade-price trade-box-with-border">
+                        <div class="trade-price-minus"><a href="#" class="trade-price-minus-icon">-<text class="trade-price-button-tip hidden-md">0.01</text></a></div>
+                        <input class="trade-price-input">
+                        <div class="trade-price-add"><a href="#" class="trade-price-add-icon">+<text class="trade-price-button-tip hidden-md">0.01</text></a></div>
+                    </div>
+                    <div class="trade-price-tip">
+                        <div class="trade-price-tip-min price-down"><a href="#" class="trade-price-select">跌停<span class="price"></span></a></div>
+                        <div class="trade-price-tip-max price-up"><a href="#" class="trade-price-select">涨停<span class="price"></span></a></div>
+                    </div>
+                    <div class="trade-counts trade-box-with-border">
+                        <div class="trade-counts-tip">数量</div>
+                        <input class="trade-counts-input">
+                        <div class="trade-counts-has">持有1024股</div>
+                    </div>
+                    <button class="trade-button" id="trade-button-buy">买入</button>
+                    <button class="trade-button" id="trade-button-bid">卖出</button>
+                </div>
+                <div class="trade-container-right">
+                    <ul class="trade-five-price-bids">
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="bid5"><span class="tip">卖5</span><span class="price">17.85</span><span class="counts">1000</span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="bid4"><span class="tip">卖4</span><span class="price"></span><span class="counts"></span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="bid3"><span class="tip">卖3</span><span class="price"></span><span class="counts"></span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="bid2"><span class="tip">卖2</span><span class="price"></span><span class="counts"></span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="bid1"><span class="tip">卖1</span><span class="price"></span><span class="counts"></span></a></li>
+                    </ul>
+                    <ul class="trade-five-price-buy">
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="buy1"><span class="tip">买1</span><span class="price"></span><span class="counts"></span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="buy2"><span class="tip">买2</span><span class="price"></span><span class="counts"></span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="buy3"><span class="tip">买3</span><span class="price"></span><span class="counts"></span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="buy4"><span class="tip">买4</span><span class="price"></span><span class="counts"></span></a></li>
+                        <li class="trade-price-item"><a href="#" class="trade-price-select" id="buy5"><span class="tip">买5</span><span class="price"></span><span class="counts"></span></a></li>
+                    </ul>
+                </div>
+            </div>
           </div>
           <!--END交易模块-->
 
@@ -242,6 +282,8 @@
 <script src="../static/js/Stock.js"></script>
 <script src="../static/js/StockGraph.js"></script>
 <script src="../static/js/StockDetail.js"></script>
+
+<script src="../static/js/Trade.js"></script>
 
 <script src="../static/js/global.js"></script>
 
