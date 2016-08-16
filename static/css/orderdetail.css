@@ -91,11 +91,22 @@
     font-size: 1vw;
 }
 
+.dropdown-menu.order-option-menu li a.finished{
+    color: #5e5e5e;
+}
+
 .dropdown-menu.order-option-menu li a:hover{
     padding: 0.4vw 3vw;
     font-size: 1vw;
     background-color: #fec303 !important;
     color: black !important;
+}
+
+.dropdown-menu.order-option-menu li a.finished:hover{
+    padding: 0.4vw 3vw;
+    font-size: 1vw;
+    background-color: #e5e5e5 !important;
+    color: #5e5e5e !important;
 }
 
 .orderdetail-panel .orderdetail-header .order-time-search{

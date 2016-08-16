@@ -28,7 +28,7 @@ var order_item = '<li class="orderdetail-item">' +
                 '<ul class="dropdown-menu order-option-menu" role="menu">' +
                     '<div class="up-triangle"></div>' +
                     '<li><a href="#" class="order-stock" data="{id}">查看</a></li>' +
-                    '<li><a href="#" class="order-undo" data="{order_id}">撤销</a></li>' +
+                    '<li><a href="#" class="order-undo {finished}" data="{order_id}">撤销</a></li>' +
                 '</ul></li>';
 
 var account_market_item = '<li class="account-market-item">' +

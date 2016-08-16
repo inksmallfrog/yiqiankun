@@ -66,7 +66,8 @@ OrderDetail.prototype.bindData = function(data){
                              .replace(/\{count}/g, orders[i].count)
                              .replace(/\{price}/g, (orders[i].price).toFixed(2))
                              .replace(/\{value}/g, orders[i].value)
-                             .replace(/\{order_id}/g, orders[i].order_id);
+                             .replace(/\{order_id}/g, orders[i].order_id)
+                             .replace(/\{finished}/g, orders[i].finished);
     }
     $(".orderdetail-container").html(content);
 
@@ -74,7 +75,10 @@ OrderDetail.prototype.bindData = function(data){
        stock.changeStock($(this).attr("data"));
     });
     $(".order-undo").click(function(){
-        order_detail.undo($(this).attr("data"));
+        if($(this).hasClass("unfinished")){
+            order_detail.undo($(this).attr("data"));
+            $(this).parents("li").remove();
+        }
     });
 };
 

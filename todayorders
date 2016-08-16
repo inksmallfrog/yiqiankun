@@ -9,7 +9,8 @@
         "status": "买入",
         "count": 1000,
         "price": 89.00,
-        "value": 8900.00
+        "value": 8900.00,
+        "finished": "unfinished"
     },
     {
         "order_id": 2,
@@ -20,7 +21,8 @@
         "status": "买入",
         "count": 1000,
         "price": 89.00,
-        "value": 8900.00
+        "value": 8900.00,
+        "finished": "finished"
     }
 ]
 }
