@@ -156,6 +156,11 @@
     color: white;
 }
 
+.account-type-button.disable{
+    background-color: #5e5e5e;
+    color: #25231f;
+}
+
 #account-add{
     font-family: "Source Han Sans CN Regular" !important;
 }

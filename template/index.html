@@ -171,23 +171,23 @@
               <div class="account-container" id="account-stock-container">
                   <div class="account-id-box">
                       <div class="account-id">
-                          <span id="account-stock-id">STOCKOI123</span>
-                          <a href="#" class="account-id-add temp-hide" id="account-stock-id-add">点击添加股市账户</a>
+                          <span id="account-stock-id" class="has-account-stock"></span>
+                          <a href="#" class="account-id-add has-no-account-stock" id="account-stock-id-add" data-toggle="modal" data-target="#account-add" data="stock">点击添加股市账户</a>
                       </div>
-                      <div class="account-quit"><a href="#"><img src="../static/assets/icons/delete.png"></a></div>
+                      <div class="account-quit has-account-stock"><a href="#" class="account-quit-button" data="stock"><img src="../static/assets/icons/delete.png"></a></div>
                       <div class="account-id-underline"></div>
                   </div>
                   <div class="account-info-box">
                       <div class="account-detail-box">
-                          <div class="account-detail-value" id="account-detail-stock-balance">500,000,000</div>
+                          <div class="account-detail-value" id="account-detail-stock-balance">0</div>
                           <div class="account-detail-tip">账户余额</div>
-                          <div class="account-detail-value" id="account-detail-stock-freezing">100,000,000</div>
+                          <div class="account-detail-value" id="account-detail-stock-freezing">0</div>
                           <div class="account-detail-tip">冻结资金</div>
-                          <div class="account-detail-value" id="account-detail-stock-market">400,000,000</div>
+                          <div class="account-detail-value" id="account-detail-stock-market">0</div>
                           <div class="account-detail-tip">股票市值</div>
-                          <div class="account-detail-value" id="account-detail-stock-total">1000,000,000</div>
+                          <div class="account-detail-value" id="account-detail-stock-total">0</div>
                           <div class="account-detail-tip">总资产</div>
-                          <div class="account-detail-value" id="account-detail-stock-profit">-4,600</div>
+                          <div class="account-detail-value" id="account-detail-stock-profit">0</div>
                           <div class="account-detail-tip">总盈亏</div>
                       </div>
                       <div class="account-market-header">
@@ -199,138 +199,31 @@
                           <span class="account-market-vol">数量</span>
                           <span class="account-market-profit">盈亏</span>
                       </div>
-                      <ul class="account-market-box scrollable slimScrollBar">
-                          <li class="account-market-item focus">
-                              <span class="account-market-code">000001</span>
-                              <span class="account-market-name">平安银行</span>
-                              <span class="account-market-price">9.08</span>
-                              <span class="account-market-cost">9.00</span>
-                              <span class="account-market-market">45400.00</span>
-                              <span class="account-market-vol">5000</span>
-                              <span class="account-market-profit">400.00</span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code">000001</span>
-                              <span class="account-market-name">平安银行</span>
-                              <span class="account-market-price">9.08</span>
-                              <span class="account-market-cost">9.00</span>
-                              <span class="account-market-market">45400.00</span>
-                              <span class="account-market-vol">5000</span>
-                              <span class="account-market-profit">400.00</span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
+                      <ul class="account-market-box scrollable slimScrollBar" id="account-market-stock-box">
+
                       </ul>
                   </div>
               </div>
               <div class="account-container" id="account-future-container">
                   <div class="account-id-box">
                       <div class="account-id">
-                          <span id="account-future-id"></span>
-                          <a href="#" data-toggle="modal" data-target="#account-add" class="account-id-add" id="account-future-id-add">点击添加股指期货账户</a>
+                          <span id="account-future-id" class="has-account-future"></span>
+                          <a href="#" data-toggle="modal" data-target="#account-add" class="account-id-add has-no-account-future" id="account-future-id-add" data="future">点击添加股指期货账户</a>
                       </div>
-                      <div class="account-quit"><a href="#"><img src="../static/assets/icons/delete.png"></a></div>
+                      <div class="account-quit has-account-future"><a href="#" class="account-quit-button" data="future"><img src="../static/assets/icons/delete.png"></a></div>
                       <div class="account-id-underline"></div>
                   </div>
                   <div class="account-info-box">
                       <div class="account-detail-box">
-                          <div class="account-detail-value" id="account-detail-future-balance">500,000,000</div>
+                          <div class="account-detail-value" id="account-detail-future-balance">0</div>
                           <div class="account-detail-tip">账户余额</div>
-                          <div class="account-detail-value" id="account-detail-future-freezing">100,000,000</div>
+                          <div class="account-detail-value" id="account-detail-future-freezing">0</div>
                           <div class="account-detail-tip">冻结资金</div>
-                          <div class="account-detail-value" id="account-detail-future-market">400,000,000</div>
+                          <div class="account-detail-value" id="account-detail-future-market">0</div>
                           <div class="account-detail-tip">股票市值</div>
-                          <div class="account-detail-value" id="account-detail-future-total">1000,000,000</div>
+                          <div class="account-detail-value" id="account-detail-future-total">0</div>
                           <div class="account-detail-tip">总资产</div>
-                          <div class="account-detail-value" id="account-detail-future-profit">-4,600</div>
+                          <div class="account-detail-value" id="account-detail-future-profit">0</div>
                           <div class="account-detail-tip">总盈亏</div>
                       </div>
                       <div class="account-market-header">
@@ -342,115 +235,8 @@
                           <span class="account-market-vol">数量</span>
                           <span class="account-market-profit">盈亏</span>
                       </div>
-                      <ul class="account-market-box scrollable slimScrollBar">
-                          <li class="account-market-item focus">
-                              <span class="account-market-code">000001</span>
-                              <span class="account-market-name">平安银行</span>
-                              <span class="account-market-price">9.08</span>
-                              <span class="account-market-cost">9.00</span>
-                              <span class="account-market-market">45400.00</span>
-                              <span class="account-market-vol">5000</span>
-                              <span class="account-market-profit">400.00</span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code">000001</span>
-                              <span class="account-market-name">平安银行</span>
-                              <span class="account-market-price">9.08</span>
-                              <span class="account-market-cost">9.00</span>
-                              <span class="account-market-market">45400.00</span>
-                              <span class="account-market-vol">5000</span>
-                              <span class="account-market-profit">400.00</span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
-                          <li class="account-market-item">
-                              <span class="account-market-code"></span>
-                              <span class="account-market-name"></span>
-                              <span class="account-market-price"></span>
-                              <span class="account-market-cost"></span>
-                              <span class="account-market-market"></span>
-                              <span class="account-market-vol"></span>
-                              <span class="account-market-profit"></span>
-                          </li>
+                      <ul class="account-market-box scrollable slimScrollBar" id="account-market-future-box">
+
                       </ul>
                   </div>
               </div>
@@ -623,15 +409,15 @@
 <div class="modal fade login-register-dialog" id="account-add" role="dialog" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-           <a href="#" class="account-add-modal-close"><img src="../static/assets/icons/delete.png"></a>
+           <a href="#" class="account-add-modal-close" data-dismiss="modal"><img src="../static/assets/icons/delete.png"></a>
             <div class="account-add-type">
-                <button class="account-type-button focus">股票</button>
-                <button class="account-type-button">股指期货</button>
+                <button class="account-type-button" id="account-type-stock" data="stock">股票</button>
+                <button class="account-type-button" id="account-type-future" data="future">股指期货</button>
             </div>
-            <input type="text" class="account-add-input" placeholder="券商">
-            <input type="text" class="account-add-input" placeholder="账号">
-            <input type="password" class="account-add-input" placeholder="密码">
-            <button class="account-add-button">登录</button>
+            <input type="text" class="account-add-input" placeholder="券商" id="account-add-brokerage">
+            <input type="text" class="account-add-input" placeholder="账号" id="account-add-id">
+            <input type="password" class="account-add-input" placeholder="密码" id="account-add-pwd">
+            <button class="account-add-button" data-dismiss="modal">登录</button>
         </div>
     </div>
 </div>
@@ -658,6 +444,7 @@
 
 <script src="../static/js/Trade.js"></script>
 <script src="../static/js/OrderDetail.js"></script>
+<script src="../static/js/Account.js"></script>
 
 <script src="../static/js/global.js"></script>
 

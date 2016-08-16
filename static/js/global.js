@@ -11,6 +11,7 @@ var selfstock;          //自选股模块对象
 var stock_detail;       //股票详情模块对象
 var trade;
 var order_detail;
+var account;
 
 $(document).ready(function(){
     user = new User();
@@ -21,6 +22,7 @@ $(document).ready(function(){
     stock_detail = new StockDetail();
     trade = new Trade();
     order_detail = new OrderDetail();
+    account = new Account();
 
     user.init();
     stock.init();
@@ -30,6 +32,7 @@ $(document).ready(function(){
     stock_detail.init();
     trade.init();
     order_detail.init();
+    account.init();
 
     $(window).resize(function(){
         header.resizeUnderline();
@@ -46,4 +49,5 @@ function update(){
 
     header.update();
     trade.update();
+    account.update();
 }

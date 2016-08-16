@@ -30,3 +30,13 @@ var order_item = '<li class="orderdetail-item">' +
                     '<li><a href="#" class="order-stock" data="{id}">查看</a></li>' +
                     '<li><a href="#" class="order-undo" data="{order_id}">撤销</a></li>' +
                 '</ul></li>';
+
+var account_market_item = '<li class="account-market-item">' +
+                            '<span class="account-market-code">{code}</span>' +
+                            '<span class="account-market-name">{name}</span>' +
+                            '<span class="account-market-price">{price}</span>' +
+                            '<span class="account-market-cost">{cost}</span>' +
+                            '<span class="account-market-market">{market}</span>' +
+                            '<span class="account-market-vol">{vol}</span>' +
+                            '<span class="account-market-profit">{profit}</span>' +
+                            '</li>';

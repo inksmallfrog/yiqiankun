@@ -1,0 +1,27 @@
+{
+    "balance": 10000000,
+    "freezing": 10,
+    "market": 20,
+    "total": 30,
+    "profit": 40,
+    "detail":[
+    {
+        "code": "000001",
+        "name": "平安银行",
+        "price": 8.00,
+        "cost": 9.01,
+        "market": 80,
+        "vol": 10,
+        "profit": -10.10
+    },
+    {
+            "code": "000003",
+            "name": "啥啥啥啥",
+            "price": 8.00,
+            "cost": 9.01,
+            "market": 80,
+            "vol": 10,
+            "profit": -10.10
+    }
+    ]
+}

@@ -48,3 +48,7 @@ setTextColor = function(node, price, close){
         node.addClass("price-down");
     }
 };
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
