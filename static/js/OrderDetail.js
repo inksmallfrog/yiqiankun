@@ -78,6 +78,6 @@ OrderDetail.prototype.bindData = function(data){
     });
 };
 
-OrderDetail.property.undo = function(order_id){
+OrderDetail.prototype.undo = function(order_id){
     $.post("../orderundo", {user_id: user.id, order_id: order_id});
 };
