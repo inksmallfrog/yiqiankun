@@ -40,3 +40,45 @@ var account_market_item = '<li class="account-market-item">' +
                             '<span class="account-market-vol">{vol}</span>' +
                             '<span class="account-market-profit">{profit}</span>' +
                             '</li>';
+
+//Under class .main-container
+var strategies_start = '<div class="strategy-titleline"></div>' +
+    '<div class="strategy-title">选股策略</div>' +
+    '<form class="strategy-form" onkeydown="if(event.keyCode==13) return false;">';
+
+var strategy_start = '<div class="strategy">' +
+    '<div class="strategy-box">'+
+    '<a class="strategy-checker" href="javascript:void(0)" data="{id}">' +
+    '<div class="check-box">' +
+    '<img src="../static/assets/icons/strategy_unchecked.png">' +
+    '</div>' +
+    '</a>' +
+    '<input class="hide" type="checkbox" name="{id}" id="checkbox-{id}">' +
+    '<a class="strategy-slider" href="javascript:void(0)">' +
+    '<div class="text-box">{name}</div>' +
+    '</a>' +
+    '</div>' +
+    '<div class="factors-dropdown dropdown-hide">' +
+    '<table class="factors-table" border="1">' +
+    '<tbody>';
+
+var factor =                        '<td>' +
+    '<div class="factor">' +
+    '<a class="factor-selector" href="javascript:void(0)">' +
+    '<img src="../static/assets/icons/icon_{factor_id}.png">' +
+    '<div class="factor-info">' +
+    '<div class="factor-name">{factor_name}</div>' +
+    '<div class="factor-value">16.32%</div>' +
+    '<input class="hide factor-input" type="text" name="{id}-{factor_id}" id="formfactor-{id}-{factor_id}">' +
+    '</div>' +
+    '</a>' +
+    '</div>' +
+    '</td>';
+var strategy_end =          '</tbody>' +
+    '</table>' +
+    '<div class="border-line left_corner"></div>' +
+    '<div class="border-line right_corner"></div>' +
+    '</div>' +
+    '</div>';
+var strategies_end = '<button type="submit">提交</button>' +
+    '</form>';

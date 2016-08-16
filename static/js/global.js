@@ -12,6 +12,7 @@ var stock_detail;       //股票详情模块对象
 var trade;
 var order_detail;
 var account;
+var strategies;
 
 $(document).ready(function(){
     user = new User();
@@ -23,6 +24,7 @@ $(document).ready(function(){
     trade = new Trade();
     order_detail = new OrderDetail();
     account = new Account();
+    strategies = new Strategies();
 
     user.init();
     stock.init();
@@ -33,6 +35,7 @@ $(document).ready(function(){
     trade.init();
     order_detail.init();
     account.init();
+    strategies.init();
 
     $(window).resize(function(){
         header.resizeUnderline();
