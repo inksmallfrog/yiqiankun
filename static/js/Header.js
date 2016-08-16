@@ -26,9 +26,9 @@ Header.prototype.resizeUnderline = function(){
 };
 
 Header.prototype.changeLoggedIcon = function(){
-    if(account.logged) {
+    if(user.logged) {
         $(".user-avator").attr("src", ICON_LOGGED);
-        $(".user-status").click(function(){account.quit();});
+        $(".user-status").click(function(){user.quit();});
     }
     else {
         $(".user-avator").attr("src", ICON_UNLOGGED);

@@ -1,23 +1,44 @@
 .trade-panel{
-    display: inline-block;
+    float:left;
     width: 50%;
-    min-height: 200px;
-
-    padding: 1.4vw;
     background-color: #25231f;
 }
 
-.trade-panel .trade-container{
+.trade-panel .trade-target{
+    float: left;
+    margin-right: 5%;
+    height: 28.3vw;
+    width: 5%;
+}
+
+.trade-panel .trade-target button{
     width: 100%;
+    height: 50%;
+    background-color: #5e5e5e;
+    color: #25231f;
+    font-family: "Source Han Sans CN Regular";
+    font-size: 1.5vw;
+}
+
+.trade-panel .trade-target button.focus{
+    background-color: #25231f;
+    color: #fec303;
+    border-left: solid 0.2vw #fec303;
+}
+
+.trade-panel .trade-container{
+    float: left;
+    padding-top: 1.4vw;
+    width: 90%;
     height: 100%;
 }
 
 .trade-panel .trade-container .trade-container-left{
     float:left;
-    width: 60%;
+    width: 56%;
     height: 100%;
     font-family: "Source Han Sans CN Regular";
-    font-size: 2vw;
+    font-size: 1.8vw;
 }
 
 .trade-panel .trade-container .trade-container-left .trade-box-with-border{
@@ -27,12 +48,31 @@
     margin: 1vw 0;
 }
 
-.trade-container .stock-info .stock-info-code,
-.trade-container .stock-info .stock-info-name{
-    float: left;
-    width: 50%;
+.trade-container .stock-info{
+    position: relative;
+}
+
+.trade-container .stock-info .stock-info-code{
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #fec303;
+    padding: 0.3vw 1.6vw;
+}
+.trade-container .stock-info input{
+    background: transparent;
+    width: 100%;
+    height: 100%;
     padding: 0.6vw 1.6vw;
     color: #fec303;
+    text-align: center;
+}
+.trade-container .stock-info .stock-info-name{
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: #fec303;
+    padding: 0.3vw 1.6vw;
 }
 .trade-container .stock-info .stock-info-name{
     text-align: right;
@@ -117,19 +157,21 @@
     text-align: center;
 }
 
-.trade-container .trade-button#trade-button-buy{
+.trade-container .trade-button#trade-button-buy,
+.trade-container .trade-button#future-trade-button-buy{
     margin-right: 16%;
 }
 
 .trade-container .trade-container-right{
     float:left;
-    width: 40%;
+    width: 44%;
+    padding: 0 7%;
     font-family: "Source Han Sans CN Regular";
 }
 
 .trade-container-right ul{
     float:left;
-    margin: 0 13% 1vw 20%;
+    margin: 0;
 
 }
 
@@ -146,4 +188,40 @@
 .trade-container-right ul li .tip,
 .trade-container-right ul li .price{
     margin-right: 1vw;
+}
+
+.trade-container-right .trade-future-type-tip{
+    margin-top: 0.6vw;
+    margin-bottom: 0.5vw;
+
+    font-family: "Source Han Sans CN Regular";
+    font-size: 2vw;
+    color: #fec303;
+    text-align: center;
+}
+
+.trade-container-right button.future-trade-button{
+    width: 95%;
+    height: 3.5vw;
+    margin: 0.8vw 2.5%;
+    background: transparent;
+    border: 0.3vw solid rgba(2, 2, 2, 0.25);
+    font-family: "Source Han Sans CN Regular";
+    font-size: 1.5vw;
+    color: rgba(2, 2, 2, 0.25);
+}
+
+.trade-container-right button.future-trade-button.focus{
+    border: 0.3vw solid #fec303;
+    color: #fec303;
+}
+
+.trade-container-right .future-trade-tip{
+    font-family: "Source Han Sans CN Regular";
+    color: #fec303;
+    font-size: 0.1vw;
+}
+
+.trade-container-right .future-trade-tip.first{
+    margin-top: 1.8vw;
 }

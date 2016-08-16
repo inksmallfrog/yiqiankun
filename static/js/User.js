@@ -3,13 +3,13 @@
  * 功能：管理当前登录的用户
  */
 
-function Account(){
+function User(){
     this.id = -1;                   //用户id
     this.logged = false;           //是否登录
 }
 
 //初始化登录情况
-Account.prototype.init = function(){
+User.prototype.init = function(){
     this.id = $.cookie("user_id");
     if(typeof this.id != 'undefined'){
         this.logged = true;
@@ -17,8 +17,8 @@ Account.prototype.init = function(){
 };
 
 //用户登录
-Account.prototype.login = function(){
-    var account = this;
+User.prototype.login = function(){
+    var user = this;
     var id = $("#user_id_input").val();
     /*
      * 发送登录信息
@@ -35,7 +35,7 @@ Account.prototype.login = function(){
         function (data, status) {
             if(data = 'succeed'){
                 $.cookie("user_id", id, {expires: 14});
-                this.id = id;
+                user.id = id;
                 window.location.reload();
             }
             else{
@@ -46,7 +46,7 @@ Account.prototype.login = function(){
 };
 
 //用户登出
-Account.prototype.quit = function(){
+User.prototype.quit = function(){
     $.cookie("user_id", '', {expires: -1});
     window.location.reload();
 };

@@ -1,0 +1,11 @@
+{
+    "id": "IF1608",
+    "code": "IF1608",
+    "name": "沪深1608",
+    "price": 3000.00,
+    "bid": 4000.00,
+    "buy": 2000.00,
+    "vol_max": 8,
+    "available_money": "1,102,203",
+    "trade_unit": 300
+}

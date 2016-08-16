@@ -3,30 +3,33 @@
  * 功能：处理初始化事件
  */
 
-var account;            //用户对象
+var user;            //用户对象
 var stock;              //股票对象
 
 var header;             //导航头模块对象
 var selfstock;          //自选股模块对象
 var stock_detail;       //股票详情模块对象
 var trade;
+var order_detail;
 
 $(document).ready(function(){
-    account = new Account();
+    user = new User();
     stock = new Stock();
 
     header = new Header();
     selfstock = new SelfStock();
     stock_detail = new StockDetail();
     trade = new Trade();
+    order_detail = new OrderDetail();
 
-    account.init();
+    user.init();
     stock.init();
 
     header.init();
     selfstock.init();
     stock_detail.init();
     trade.init();
+    order_detail.init();
 
     $(window).resize(function(){
         header.resizeUnderline();
@@ -42,4 +45,5 @@ function update(){
     stock.update();
 
     header.update();
+    trade.update();
 }

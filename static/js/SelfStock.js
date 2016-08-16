@@ -9,7 +9,7 @@ function SelfStock(){
 
 SelfStock.prototype.init = function(){
     this.stock_ul = $(".selfstock-list");
-    if (account.logged) {
+    if (user.logged) {
         this.loadList();
 
     } else {
@@ -30,7 +30,7 @@ SelfStock.prototype.loadList = function(){
      *             ：code => 股票代码
      *             ：name => 股票名称
      */
-    $.post("../selfstock", {id: account.id}, function(data){
+    $.post("../selfstock", {id: user.id}, function(data){
                 selfstock.stock_list = data.selfstock;
                 selfstock.bindData();
             }, "json")
