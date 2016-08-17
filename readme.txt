@@ -77,7 +77,7 @@ TodoList:
                  正确结果：自选股列表正确显示
             b、添加自选股
                 触发：用户点击添加选项并完成输入时
-                前端位置：SelfStock.js line: 106
+                前端位置：SelfStock.js line: 111
                 /*
                  * 发送添加自选股请求
                  * 发送目标：{root}/selfstockadd
@@ -89,7 +89,7 @@ TodoList:
                  正确结果：自选股加入数据库中
              c、删除自选股
                 触发：用户点击自选股右侧X按钮时
-                前端位置：SelfStock.js line:129
+                前端位置：SelfStock.js line:135
                 /*
                  * 发送删除自选股请求
                  * 发送目标：{root}/selfstockdelete

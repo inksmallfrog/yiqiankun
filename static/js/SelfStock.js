@@ -57,7 +57,7 @@ SelfStock.prototype.bindData = function(){
         if(existed){
             continue;
         }
-        content += '<option value="' + stock_list[i].id + '">' + stock_list[i].name + '(' + stock_list[i].code + ')</option>';
+        content += '<option value="' + stock_list[i].id + '" class="selfstocklist-select-item">' + stock_list[i].name + '(' + stock_list[i].code + ')</option>';
     }
     content += '</select>';
     this.stock_ul.html(content);
@@ -73,6 +73,15 @@ SelfStock.prototype.bindData = function(){
         selfstock.deleteStock($(this).attr("data"), $(this).parents("li"));
     });
 
+    $(".option-item").click(function(){
+        console.log($(".selfstock-select").val());
+        var stockid = $(this).val();
+        var stockcode = stockid.substring(0, 6);
+        var stockname = $(this).find("option:selected").text().split('(')[0];
+        console.log(stockid + stockcode + stockname);
+        selfstock.addStock(stockid, stockcode, stockname);
+        $(this).parents(".combo-select").focusout();
+    });
     $(function(){
         $('.selfstock-select').comboSelect();
         $(".selfstock-select").change(function(){
@@ -80,17 +89,13 @@ SelfStock.prototype.bindData = function(){
             var stockcode = stockid.substring(0, 6);
             var stockname = $(this).find("option:selected").text().split('(')[0];
             if(stockid != null && stockid != ''){
-                selfstock.stock_list.push({id:stockid, code:stockcode, name:stockname});
                 selfstock.addStock(stockid, stockcode, stockname);
             }
             $(this).parents(".combo-select").focusout();
-        });
-
-        $('.selfstock-select').parents(".combo-select").hide();
-        $('.selfstock-select').parents(".combo-select").focusout(function(){
-            $(this).hide();
+            $(this).parents(".combo-select").hide();
             $("#selfstock-add").parents("li").show();
         });
+        $('.selfstock-select').parents(".combo-select").hide();
 
         $("#selfstock-add").click(function(){
             $('.selfstock-select').parents(".combo-select").show();
@@ -113,6 +118,7 @@ SelfStock.prototype.addStock = function(id, code, name){
      */
     $.post("../selfstockadd", {user_id: account.id, id: id});
 
+    this.stock_list.push({id:id, code:code, name:name});
     var content = selfstock_eachstock.replace(/\{id}/g, id).replace(/\{code}/g, code).replace(/\{name}/g, name);
     var selfstock = this;
     $(".selfstock-last-item").before(content);

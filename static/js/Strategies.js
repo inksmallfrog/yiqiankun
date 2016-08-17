@@ -119,6 +119,7 @@ Strategies.prototype.build_content = function(){
 };
 
 Strategies.prototype.hide = function(){
+    $(".factors-dropdown").hide();
   $(".strategies-panel").addClass("hide-right");
 };
 

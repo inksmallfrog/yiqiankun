@@ -208,6 +208,7 @@ Account.prototype.quitAccount = function(type){
 };
 
 Account.prototype.show = function(){
+    strategies.hide();
   $(".accounts-panel").removeClass("hide-right");
 };
 
