@@ -15,17 +15,31 @@ User.prototype.init = function(){
         this.logged = true;
     }
     this.toLogin();
+
+    $("#show-pwd-button").click(function(){
+        $("#signup_pwd_input").attr("type", $(this).attr("data"));
+        if($(this).attr("data") == "text"){
+            $(this).attr("data", "password");
+            $(this).html("隐藏密码");
+        }
+        else{
+            $(this).attr("data", "text");
+            $(this).html("显示密码");
+        }
+    })
 };
 
 User.prototype.toLogin = function(){
     $("#login-signup-title").html("登录");
     $(".signup-tips").removeClass("login");
-    $("#login-button").unbind("click");
-    $("#login-button").click(function(){
+    var login_button = $("#login-button");
+    login_button.unbind("click");
+    login_button.click(function(){
         user.login();
     });
-    $("#signup-button").unbind("click");
-    $("#signup-button").click(function(){
+    var signup_button = $("#signup-button");
+    signup_button.unbind("click");
+    signup_button.click(function(){
         user.toSignup();
     });
 };
@@ -33,12 +47,14 @@ User.prototype.toLogin = function(){
 User.prototype.toSignup = function(){
     $("#login-signup-title").html("注册");
     $(".signup-tips").addClass("login");
-    $("#login-button").unbind("click");
-    $("#login-button").click(function(){
+    var login_button = $("#login-button");
+    login_button.unbind("click");
+    login_button.click(function(){
         user.toLogin();
     });
-    $("#signup-button").unbind("click");
-    $("#signup-button").click(function(){
+    var signup_button = $("#signup-button");
+    signup_button.unbind("click");
+    signup_button.click(function(){
         user.signup();
     });
 };
@@ -77,15 +93,15 @@ User.prototype.signup = function(){
     var user = this;
     var id = $("#signup_user_id_input").val();
     /*
-     * 发送登录信息
-     * 发送目标：{root}/login
+     * 发送注册信息
+     * 发送目标：{root}/signup
      * 发送方式：post
      * 发送内容：id => 用户id
      *           pwd => 用户密码
      * 返回格式：字符串
-     * 期待返回内容："succeed" => 登录成功
-     *             ："user_id_error" => 用户名错误
-     *             ："pwd_error" => 密码错误
+     * 期待返回内容："succeed" => 注册成功
+     *             ："signup_user_id_error" => 用户名已存在
+     *             ："signup_pwd_error" => ？
      */
     $.post("../signup", {id: id, pwd: $("#singup_pwd_input").val()},
         function (data, status) {
@@ -103,6 +119,14 @@ User.prototype.signup = function(){
 
 //用户登出
 User.prototype.quit = function(){
+    /*
+     * 发送登出信息
+     * 发送目标：{root}/logout
+     * 发送方式：post
+     * 发送内容：user_id => 用户id
+     * 返回：无
+     */
+    $.post("../logout", {user_id: user.id});
     $.cookie("user_id", '', {expires: -1});
     window.location.reload();
 };

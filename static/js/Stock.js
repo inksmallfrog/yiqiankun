@@ -20,27 +20,6 @@ function Stock(){
     this.marketvalue;       //市值
     this.available_marketvalue;     //流动市值
 
-    this.bid5;
-    this.bid5vol;
-    this.bid4;
-    this.bid4vol;
-    this.bid3;
-    this.bid3vol;
-    this.bid2;
-    this.bid2vol;
-    this.bid1;
-    this.bid1vol;
-    this.buy1;
-    this.buy1vol;
-    this.buy2;
-    this.buy2vol;
-    this.buy3;
-    this.buy3vol;
-    this.buy4;
-    this.buy4vol;
-    this.buy5;
-    this.buy5vol;
-
     this.current_data;              //图表数据
 }
 
@@ -84,26 +63,6 @@ Stock.prototype.updateDetail = function(){
      *               value => 总额
      *               marketvalue => 市值
      *               available_marketvalue => 流通市值
-     *               bid5 => 卖5
-     *               bid5vol => 卖5量
-     *               bid4 => 卖4
-     *               bid4vol => 卖4量
-     *               bid3 => 卖3
-     *               bid3vol => 卖3量
-     *               bid2 => 卖2
-     *               bid2vol => 卖2量
-     *               bid1 => 卖1
-     *               bid1vol => 卖1 量
-     *               buy1 => 买1
-     *               buy1vol => 买1量
-     *               buy2 => 买2
-     *               buy2vol => 买2量
-     *               buy3 => 买3
-     *               buy3vol => 买3量
-     *               buy4 => 买4
-     *               buy4vol => 买4量
-     *               buy5 => 买5
-     *               buy5vol => 买5量
      */
     var stock = this;
     $.post("../getstockdata", {id: this.id}, function(data){

@@ -40,34 +40,38 @@ Trade.prototype.init = function(){
         }
     });
     if(!user.logged){
-        $(".trade-button-buy").attr("data-toggle", "modal");
-        $(".trade-button-buy").attr("data-target", "#login-register");
-        $(".trade-button-bid").attr("data-toggle", "modal");
-        $(".trade-button-bid").attr("data-target", "#login-register");
+        var trade_button_buy = $(".trade-button-buy");
+        trade_button_buy.attr("data-toggle", "modal");
+        trade_button_buy.attr("data-target", "#login-register");
+        var trade_button_bid = $(".trade-button-bid");
+        trade_button_bid.attr("data-toggle", "modal");
+        trade_button_bid.attr("data-target", "#login-register");
     }
-    $("#trade-future-input").focus(function(){
+    var trade_future_input = $("#trade-future-input");
+    trade_future_input.focus(function(){
        $("#trade-future-code").hide();
        $("#trade-future-name").hide();
     });
-    $("#trade-future-input").change(function(){
+    trade_future_input.change(function(){
         trade.futureid = $(this).val();
         trade.update();
     });
-    $("#trade-future-input").focusout(function(){
+    trade_future_input.focusout(function(){
         $(this).val("");
         $("#trade-future-code").show();
         $("#trade-future-name").show();
     });
 
-    $("#trade-stock-input").focus(function(){
+    var trade_stock_input = $("#trade-stock-input");
+    trade_stock_input.focus(function(){
         $("#trade-stock-code").hide();
         $("#trade-stock-name").hide();
     });
-    $("#trade-stock-input").change(function(){
+    trade_stock_input.change(function(){
         trade.stockid = $(this).val();
         trade.update();
     });
-    $("#trade-stock-input").focusout(function(){
+    trade_stock_input.focusout(function(){
         $(this).val("");
         $("#trade-stock-code").show();
         $("#trade-stock-name").show();
@@ -81,29 +85,33 @@ Trade.prototype.init = function(){
 };
 
 Trade.prototype.tradeAvailable = function(type){
-    $("#" + type + "-trade-button-buy").attr("data-toggle", "");
-    $("#" + type + "-trade-button-buy").unbind("click");
-    $("#" + type + "-trade-button-buy").click(function(){
+    var trade_button_buy = $("#" + type + "-trade-button-buy");
+    trade_button_buy.attr("data-toggle", "");
+    trade_button_buy.unbind("click");
+    trade_button_buy.click(function(){
         trade.buy();
     });
-    $("#" + type + "+trade-button-bid").attr("data-toggle", "");
-    $("#" + type + "-trade-button-bid").unbind("click");
-    $("#" + type + "-trade-button-bid").click(function(){
+    var trade_button_bid = $("#" + type + "-trade-button-bid");
+    trade_button_bid.attr("data-toggle", "");
+    trade_button_bid.unbind("click");
+    trade_button_bid.click(function(){
         trade.bid();
     });
 };
 
 Trade.prototype.tradeDisavailable = function(type){
-    $("#" + type + "-trade-button-buy").attr("data-toggle", "modal");
-    $("#" + type + "-trade-button-buy").attr("data-target", "#account-add");
-    $("#" + type + "-trade-button-buy").unbind("click");
-    $("#" + type + "-trade-button-buy").click(function(){
+    var trade_button_buy = $("#" + type + "-trade-button-buy");
+    trade_button_buy.attr("data-toggle", "modal");
+    trade_button_buy.attr("data-target", "#account-add");
+    trade_button_buy.unbind("click");
+    trade_button_buy.click(function(){
        account.changeAddType(type);
     });
-    $("#" + type + "-trade-button-bid").attr("data-toggle", "modal");
-    $("#" + type + "-trade-button-bid").attr("data-target", "#account-add");
-    $("#" + type + "-trade-button-bid").unbind("click");
-    $("#" + type + "-trade-button-bid").click(function(){
+    var trade_button_bid = $("#" + type + "-trade-button-bid");
+    trade_button_bid.attr("data-toggle", "modal");
+    trade_button_bid.attr("data-target", "#account-add");
+    trade_button_bid.unbind("click");
+    trade_button_bid.click(function(){
         account.changeAddType(type);
     });
 
@@ -119,6 +127,22 @@ Trade.prototype.update = function(){
 };
 
 Trade.prototype.updateFuture = function(){
+    /*
+     * 获得期货数据
+     * 发送目标：{root}/tradefutureinfo
+     * 发送方式：post
+     * 发送内容：user_id => 用户id
+     *           id => 期货id
+     * 返回格式： json
+     * 期待返回内容：code => 期货代码
+     *               name => 期货名称
+     *               price => 期货现价
+     *               buy => 买入价
+     *               bid => 卖出价
+     *               vol_max => 该用户最大交易量
+     *               available_money => 用户期货账户可用资金
+     *               trade_unit => 期货交易的单位(即xxx人民币/手中的xxx)
+     */
     $.post("../tradefutureinfo", {user_id: user.id, id: this.futureid}, function(future){
         $("#trade-future-code").html(future.code);
         $("#trade-future-name").html(future.name);
@@ -136,6 +160,40 @@ Trade.prototype.updateFuture = function(){
 };
 
 Trade.prototype.updateStock = function(){
+    /*
+     * 获得股票数据
+     * 发送目标：{root}/tradestockinfo
+     * 发送方式：post
+     * 发送内容：user_id => 用户id
+     *           id => 股票id
+     * 返回格式： json
+     * 期待返回内容：code => 股票代码
+     *               name => 股票名称
+     *               price => 股票现价
+     *               min => 跌停价
+     *               max => 涨停价
+     *               vol_has => 该用户当前持有量
+     *               bid5 => 卖5价
+     *               bid5vol => 卖5量
+     *               bid4 => 卖4价
+     *               bid4vol => 卖4量
+     *               bid3 => 卖3价
+     *               bid3vol => 卖3量
+     *               bid2 => 卖2价
+     *               bid2vol => 卖2量
+     *               bid1 => 卖1价
+     *               bid1vol => 卖1量
+     *               buy5 => 买5价
+     *               buy5vol => 买5量
+     *               buy4 => 买4价
+     *               buy4vol => 买4量
+     *               buy3 => 买3价
+     *               buy3vol => 买3量
+     *               buy2 => 买2价
+     *               buy2vol => 买2量
+     *               buy1 => 买1价
+     *               buy1vol => 买1量
+     */
     $.post("../tradestockinfo", {user_id: user.id, id: this.stockid}, function(stock){
         $(".stock-info-code").html(stock.code);
         $(".stock-info-name").html(stock.name);
@@ -231,15 +289,16 @@ Trade.prototype.toStock = function(){
     }
 };
 
-Trade.prototype.buy = function(){
+Trade.prototype.trade = function(action){
     /*
-     * 发送买入请求
+     * 发送交易请求
      * 发送目标：{root}/trade
      * 发送方式：post
      * 发送内容：user_id => 用户id
      *           id => 股票/期货id
      *           price => 价格
      *           counts => 数量
+     *           option => 期货交易类型(仅当交易期货时有数据，"limited_price" => 限价， "market_price" => 市价， "stop_price" => 止损价)
      *           type => 类型("future" => 期货, "stock" => 股票)
      *           action => 执行动作("buy" => 买入, "bid" => 卖出)
      * 返回：无
@@ -248,25 +307,13 @@ Trade.prototype.buy = function(){
     if(this.trade_target == "future"){
         option = $("#trade-future-container-right").children("focus").attr("data");
     }
-    $.post("../trade", {user_id: user.id, id: stock.id, price: $(".trade-price-input").val(), counts: $(".trade-counts-input").val(), action: "buy", type: trade.trade_target, option: option});
+    $.post("../trade", {user_id: user.id, id: stock.id, price: $(".trade-price-input").val(), counts: $(".trade-counts-input").val(), action: action, type: trade.trade_target, option: option});
+};
+
+Trade.prototype.buy = function(){
+    this.trade("buy");
 };
 
 Trade.prototype.bid = function(){
-    /*
-     * 发送卖出请求
-     * 发送目标：{root}/trade
-     * 发送方式：post
-     * 发送内容：user_id => 用户id
-     *           id => 股票/期货id
-     *           price => 价格
-     *           counts => 数量
-     *           type => 类型("future" => 期货, "stock" => 股票)
-     *           action => 执行动作("buy" => 买入, "bid" => 卖出)
-     * 返回：无
-     */
-    var option = "";
-    if(this.trade_target == "future"){
-        option = $("#trade-future-container-right").children("focus").attr("data");
-    }
-    $.post("../trade", {user_id: user.id, id: stock.id, price: $(".trade-price-input").val(), counts: $(".trade-counts-input").val(), action: "bid", type: trade.trade_target, option: option});
+    this.trade("bid");
 };

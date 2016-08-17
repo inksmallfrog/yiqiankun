@@ -10,18 +10,14 @@
         "name": "平安银行",
         "price": 8.00,
         "cost": 9.01,
-        "market": 80,
         "vol": 10,
-        "profit": -10.10
     },
     {
             "code": "000003",
             "name": "啥啥啥啥",
             "price": 8.00,
             "cost": 9.01,
-            "market": 80,
             "vol": 10,
-            "profit": -10.10
     }
     ]
 }
