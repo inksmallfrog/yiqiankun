@@ -133,15 +133,16 @@ TodoList:
                                股票图表类型修改时
                                分时图情况下，每个刷新间隔后自动触发
                          前端位置：Stock.js line:116
-                         /*
-                          * 发送股票图表请求
-                          * 发送目标：{root}/getstockgraphdata
-                          * 发送方式：post
-                          * 发送内容：id => 股票id
-                          *           type => 图表类型('graph-daily' => 日线; 'graph-weekly' => 周线; 'graph-monthly' => 月线'; 'graph-time' => '分时图')
-                          * 返回格式：二维数组
-                          * 期待返回内容：[时间，开盘，收盘，最低，最高]
-                          */
+                        /*
+                         * 发送股票图表请求
+                         * 发送目标：{root}/getstockgraphdata
+                         * 发送方式：post
+                         * 发送内容：id => 股票id
+                         *           type => 图表类型('graph-daily' => 日线; 'graph-weekly' => 周线; 'graph-monthly' => 月线'; 'graph-time' => '分时图')
+                         *           start_time => 起始时间(格式"yyyy-MM-dd", 为空则代表默认时间)
+                         * 返回格式：二维数组
+                         * 期待返回内容：[时间，开盘，收盘，最低，最高]
+                         */
                           正确结果：图表正确显示数据
 
         交易模块：
