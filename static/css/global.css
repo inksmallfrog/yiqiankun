@@ -4,6 +4,9 @@
     outline: none;
     border: none;
 }
+.vbox{
+    background-color: white;
+}
 
 a{
     color: inherit;
@@ -38,6 +41,10 @@ div.border{
 
 .price-down{
     color: #37c330 !important;
+}
+
+.hide-right{
+    left: 100% !important;
 }
 
 @media screen and (max-width: 768px){

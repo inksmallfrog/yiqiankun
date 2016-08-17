@@ -2,7 +2,7 @@
  * Created by inksmallfrog on 2016/8/11.
  * 功能：模板
  */
-var selfstock_unlogged = '<li><a href="#" data-toggle="modal" data-target="#login-register"><span class="stock-login">您尚未登录</span></a></li>';
+var selfstock_unlogged = '<li class="selfstock-item"><a href="#" data-toggle="modal" data-target="#login-register"><span class="stock-login">您尚未登录</span></a></li>';
 
 var selfstock_eachstock = '<li class="selfstock-item"><a href="#" class="selfstock-item-detail" id="selfstock-{id}" data="{id}"><span class="stock-id">{code}</span><span class="stock-name">{name}</span></a><a href="#" class="delete-icon" data="{id}"><img src="../static/assets/icons/delete.png"></a></li>';
 

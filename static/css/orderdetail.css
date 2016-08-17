@@ -96,8 +96,6 @@
 }
 
 .dropdown-menu.order-option-menu li a:hover{
-    padding: 0.4vw 3vw;
-    font-size: 1vw;
     background-color: #fec303 !important;
     color: black !important;
 }

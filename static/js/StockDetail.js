@@ -41,6 +41,11 @@ StockDetail.prototype.update = function(){
     this.bindData();
 };
 
+StockDetail.prototype.show = function(){
+    account.hide();
+    strategies.hide();
+};
+
 //绑定详情数据
 StockDetail.prototype.bindData = function(){
     $(".detail-name").html(stock.name + "(" + stock.code + ")");

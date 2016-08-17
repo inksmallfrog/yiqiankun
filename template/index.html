@@ -40,7 +40,16 @@
       <!--END时间条-->
 
       <!--登录头像-->
-      <a href="#" class="user-status"><img src="../static/assets/icons/unlogged.png" class="user-avator"></a>
+      <div class="user-status-box">
+          <a href="#" class="user-status"><img src="../static/assets/icons/unlogged.png" class="user-avator"></a>
+          <ul class="dropdown-menu user-option-menu" role="menu">
+              <div class="up-triangle"></div>
+              <li><a href="#" id="market-panel-button">查看行情</a></li>
+              <li><a href="#" id="account-panel-button">账户管理</a></li>
+              <li><a href="#" id="strategies-panel-button">策略选股</a></li>
+              <li><a href="#" id="logout-button">登出</a></li>
+          </ul>
+      </div>
       <!--END登录头像-->
     </header>
     <div class="header-underline navbar-fixed-top"></div>
@@ -75,7 +84,7 @@
           <!--END自选股模块-->
 
           <!--股票信息模块-->
-          <div class="stockdetail-panel temp-hide">
+          <div class="stockdetail-panel">
               <!--搜索-->
               <div class="search-box">
                   <div class="stocklist-select-box">
@@ -162,13 +171,13 @@
           <!--END股票信息模块-->
 
           <!--策略模块-->
-          <div class="strategies-panel">
+          <div class="strategies-panel hide-right">
 
           </div>
           <!--END策略模块-->
 
           <!--账户管理模块-->
-          <div class="accounts-panel temp-hide">
+          <div class="accounts-panel hide-right">
               <div class="account-container" id="account-stock-container">
                   <div class="account-id-box">
                       <div class="account-id">
@@ -275,8 +284,8 @@
                           <input class="trade-counts-input">
                           <div class="trade-counts-has" id="trade-future-vol">最大8手</div>
                       </div>
-                      <button class="trade-button" id="future-trade-button-buy">买入</button>
-                      <button class="trade-button" id="future-trade-button-bid">卖出</button>
+                      <button class="trade-button trade-button-buy" id="future-trade-button-buy">买入</button>
+                      <button class="trade-button trade-button-bid" id="future-trade-button-bid">卖出</button>
                   </div>
                   <div class="trade-container-right" id="trade-future-container-right">
                       <div class="trade-future-type-tip">委托类型</div>
@@ -308,8 +317,8 @@
                         <input class="trade-counts-input">
                         <div class="trade-counts-has" id="trade-stock-vol">持有1024股</div>
                     </div>
-                    <button class="trade-button" id="trade-button-buy">买入</button>
-                    <button class="trade-button" id="trade-button-bid">卖出</button>
+                    <button class="trade-button trade-button-buy" id="stock-trade-button-buy">买入</button>
+                    <button class="trade-button trade-button-bid" id="stock-trade-button-bid">卖出</button>
                 </div>
                 <div class="trade-container-right">
                     <ul class="trade-five-price-bids">
@@ -370,33 +379,50 @@
                 <div class="border" id="dialog-right"></div>
                 <button class="dialog-close" data-dismiss="modal"></button>
                 <div class="dialog-container">
-                    <div class="title">登录</div>
-                    <form class="login-form" id="login-signup-form" onsubmit="return account.login()" method="post">
+                    <div class="title" id="login-signup-title">登录</div>
+                    <form class="login-form" id="login-signup-form" onsubmit="return false;" method="post">
                         <div class="login left">
                             <div class="form-text">用户名/email/手机号码</div>
                             <input type="text" name="user_id" id="user_id_input">
                             <div class="temp-hide error-tip" id="user_id_error">
                                 <div class="error-tip-triangle"></div>
-                                <div class="error-tip-content" id="user_id_error_content"></div>
+                                <div class="error-tip-content" id="user_id_error_content">用户名不存在</div>
                             </div>
                             <div class="form-text">密码</div>
                             <input type="password" name="pwd" id="pwd_input">
                             <div class="temp-hide error-tip" id="pwd_error">
                                 <div class="error-tip-triangle"></div>
-                                <div class="error-tip-content" id="pwd_error_content"></div>
+                                <div class="error-tip-content" id="pwd_error_content">密码错误</div>
                             </div>
                             <a href="#" class="form-link">忘记密码？</a>
                             <input class="hide" name="action" type="text" id="action_type">
-                            <button type="submit" class="tiny-left" onclick="setAction('login')">登录</button>
-                            <button type="submit" class="show-tiny tiny-right" onclick="setAction('signup')">注册</button>
+                            <button class="tiny-left" id="login-button">登录</button>
+                            <button class="show-tiny tiny-right">注册</button>
                         </div>
                         <div class="seperate-line hide-tiny"></div>
-                        <div class="register left hide-tiny">
+                        <div class="signup-tips">
                             <img src="../static/assets/icons/brand.png">
                             <div class="brand-text">加入我们！</div>
                             <div class="brand-text">每月超高收益率</div>
                             <div class="brand-text">等你参与！</div>
-                            <button type="submit" onclick="setAction('signup')">注册</button>
+                        </div>
+                        <div class="register left hide-tiny">
+                            <div class="signup-box">
+                                <div class="form-text">用户名/email/手机号码</div>
+                                <input type="text" id="signup_user_id_input">
+                                <div class="temp-hide error-tip" id="signup_user_id_error">
+                                    <div class="error-tip-triangle"></div>
+                                    <div class="error-tip-content" id="signup_user_id_error_content">用户名已存在</div>
+                                </div>
+                                <div class="form-text">密码</div>
+                                <input type="password" id="signup_pwd_input">
+                                <div class="temp-hide error-tip" id="signup_pwd_error">
+                                    <div class="error-tip-triangle"></div>
+                                    <div class="error-tip-content" id="signup_pwd_error_content"></div>
+                                </div>
+                                <a href="#" class="form-link">显示密码</a>
+                            </div>
+                            <button id="signup-button">注册</button>
                         </div>
                     </form>
                 </div>
@@ -405,6 +431,18 @@
     </div>
 </div>
 <!--End 登录注册窗口-->
+
+<!--注册窗口-->
+<div class="modal fade login-register-dialog" id="signup" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <input type="text" class="account-add-input" placeholder="账号" id="account-add-i">
+            <input type="password" class="account-add-input" placeholder="密码" id="account-ad-pwd">
+            <button class="account-add-button" data-dismiss="modal">注册</button>
+        </div>
+    </div>
+</div>
+<!--End 注册窗口-->
 
 <!--添加账户窗口-->
 <div class="modal fade login-register-dialog" id="account-add" role="dialog" aria-hidden="true">

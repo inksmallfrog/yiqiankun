@@ -157,7 +157,7 @@
     text-align: center;
 }
 
-.trade-container .trade-button#trade-button-buy,
+.trade-container .trade-button#stock-trade-button-buy,
 .trade-container .trade-button#future-trade-button-buy{
     margin-right: 16%;
 }

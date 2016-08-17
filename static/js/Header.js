@@ -16,6 +16,19 @@ Header.prototype.init = function(){
     this.update();
 
     $(".user-status").click(this.statusClicked());
+
+    $("#market-panel-button").click(function(){
+       stock_detail.show();
+    });
+    $("#account-panel-button").click(function(){
+        account.show();
+    });
+    $("#strategies-panel-button").click(function(){
+        strategies.show();
+    });
+    $("#logout-button").click(function(){
+        user.quit();
+    })
 };
 
 Header.prototype.resizeUnderline = function(){
@@ -28,7 +41,8 @@ Header.prototype.resizeUnderline = function(){
 Header.prototype.changeLoggedIcon = function(){
     if(user.logged) {
         $(".user-avator").attr("src", ICON_LOGGED);
-        $(".user-status").click(function(){user.quit();});
+        $(".user-status").attr("data-toggle", "dropdown");
+        $(".user-status").attr("data-target", "#");
     }
     else {
         $(".user-avator").attr("src", ICON_UNLOGGED);

@@ -39,12 +39,12 @@ Trade.prototype.init = function(){
             trade.toStock();
         }
     });
-    $("#trade-button-buy").click(function(){
-        trade.buy();
-    });
-    $("#trade-button-bid").click(function(){
-        trade.bid();
-    });
+    if(!user.logged){
+        $(".trade-button-buy").attr("data-toggle", "modal");
+        $(".trade-button-buy").attr("data-target", "#login-register");
+        $(".trade-button-bid").attr("data-toggle", "modal");
+        $(".trade-button-bid").attr("data-target", "#login-register");
+    }
     $("#trade-future-input").focus(function(){
        $("#trade-future-code").hide();
        $("#trade-future-name").hide();
@@ -78,6 +78,35 @@ Trade.prototype.init = function(){
     });
 
     this.toStock();
+};
+
+Trade.prototype.tradeAvailable = function(type){
+    $("#" + type + "-trade-button-buy").attr("data-toggle", "");
+    $("#" + type + "-trade-button-buy").unbind("click");
+    $("#" + type + "-trade-button-buy").click(function(){
+        trade.buy();
+    });
+    $("#" + type + "+trade-button-bid").attr("data-toggle", "");
+    $("#" + type + "-trade-button-bid").unbind("click");
+    $("#" + type + "-trade-button-bid").click(function(){
+        trade.bid();
+    });
+};
+
+Trade.prototype.tradeDisavailable = function(type){
+    $("#" + type + "-trade-button-buy").attr("data-toggle", "modal");
+    $("#" + type + "-trade-button-buy").attr("data-target", "#account-add");
+    $("#" + type + "-trade-button-buy").unbind("click");
+    $("#" + type + "-trade-button-buy").click(function(){
+       account.changeAddType(type);
+    });
+    $("#" + type + "-trade-button-bid").attr("data-toggle", "modal");
+    $("#" + type + "-trade-button-bid").attr("data-target", "#account-add");
+    $("#" + type + "-trade-button-bid").unbind("click");
+    $("#" + type + "-trade-button-bid").click(function(){
+        account.changeAddType(type);
+    });
+
 };
 
 Trade.prototype.update = function(){

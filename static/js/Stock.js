@@ -59,6 +59,7 @@ Stock.prototype.changeStock = function(id){
     this.id = id;
     this.updateDetail();
     this.updateGraphData();
+    stock_detail.show();
 };
 
 Stock.prototype.updateDetail = function(){

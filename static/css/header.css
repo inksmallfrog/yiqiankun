@@ -41,9 +41,15 @@ div.time-show div.time{
     color: #fec303;
 }
 
+.header-container .header .user-status-box{
+    float:right;
+    text-align: center;
+}
+
 .header-container .header a.user-status{
     float:right;
-    padding: 10px 0;
+    padding: 10px 1.6vw;
+    margin-right: 2vw;
 }
 
 .user-status img.user-avator{
@@ -55,6 +61,33 @@ div.time-show div.time{
     top:50px;
     height: 2px;
     width: 0;
+}
+
+.header-container .user-option-menu{
+    padding: 0;
+    margin: 0.6vw 0 0 0;
+    left: initial;
+    right: 0;
+    width: 9.3vw;
+    min-width: 84px;
+    background-color: #e5e5e5;
+    font-family: "Source Han Sans CN Normal";
+}
+
+.user-option-menu .up-triangle{
+    position: absolute;
+    left: 37%;
+    top: -1vw;
+    width: 0;
+    height: 0;
+    border-left: 1.2vw solid transparent;
+    border-right: 1.2vw solid transparent;
+    border-bottom: 1vw solid #e5e5e5;
+}
+
+.user-option-menu li a:hover{
+    background-color: #fec303 !important;
+    color: black !important;
 }
 
 @media screen and (max-width: 768px){

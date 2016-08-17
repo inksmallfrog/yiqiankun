@@ -117,3 +117,12 @@ Strategies.prototype.build_content = function(){
 
     return content;
 };
+
+Strategies.prototype.hide = function(){
+  $(".strategies-panel").addClass("hide-right");
+};
+
+Strategies.prototype.show = function(){
+    account.hide();
+    $(".strategies-panel").removeClass("hide-right");
+};

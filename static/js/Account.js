@@ -11,6 +11,7 @@ Account.prototype.init = function(){
     this.loadAccount("stock");
     this.loadAccount("future");
 
+
     $(".account-id-add").click(function(){
         account.changeAddType($(this).attr("data"));
     });
@@ -46,10 +47,16 @@ Account.prototype.loadAccount = function(type){
                    $(".has-account-" + type).show();
                    $(".has-no-account-" + type).hide();
                    $("#account-type-" + type).addClass("disable");
+                   if(user.logged){
+                       trade.tradeAvailable(type);
+                   }
                }
                else{
                    $(".has-no-account-" + type).show();
                    $(".has-account-" + type).hide();
+                   if(user.logged){
+                       trade.tradeDisavailable(type);
+                   }
                }
                account.loadAccountData(type);
         })
@@ -148,6 +155,14 @@ Account.prototype.quitAccount = function(type){
         $(".has-account-" + type).hide();
         account.bindEmptyData(type);
         account.has_account[type] = false;
+        trade.tradeDisavailable(type);
     });
 };
 
+Account.prototype.show = function(){
+  $(".accounts-panel").removeClass("hide-right");
+};
+
+Account.prototype.hide = function(){
+    $(".accounts-panel").addClass("hide-right");
+};

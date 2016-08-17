@@ -37,6 +37,8 @@ $(document).ready(function(){
     account.init();
     strategies.init();
 
+    stock_detail.show();
+
     $(window).resize(function(){
         header.resizeUnderline();
         stock_detail.stock_graph.stock_chart.resize();

@@ -153,14 +153,32 @@ div.login-register-dialog div div div.dialog-with-border div.dialog-container fo
 }
 div.login-register-dialog div div div.dialog-with-border div.dialog-container form div.register{
     clear:none;
-    text-align: center;
     margin-left: 5%;
 }
-div.login-register-dialog div div div.dialog-with-border div.dialog-container form div.register img{
+.signup-tips{
+    z-index: 10;
+    position: absolute;
+    width: 45%;
+    text-align: center;
+    background-color: white;
+    left: 53%;
+
+    -webkit-transition: left 1s;
+    -moz-transition: left 1s;
+    -ms-transition: left 1s;
+    -o-transition: left 1s;
+    transition: left 1s;
+}
+
+.signup-tips.login{
+    left:0;
+}
+
+.signup-tips img{
     margin-top: -30px;
     margin-bottom: 6.4px;
 }
-div.login-register-dialog div div div.dialog-with-border div.dialog-container form div.register div.brand-text{
+.signup-tips div.brand-text{
     font-family: "Source Han Sans CN Normal";
     font-weight: bold;
     margin: 10px 0;
