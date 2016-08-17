@@ -16,13 +16,32 @@ StockDetail.prototype.init = function(){
     content += '</select>';
     $(".stocklist-select-box").html(content);
 
+    var date = new Date();
+    $("#time-search-y").attr("placeholder", date.format("yyyy"));
+    $("#time-search-M").attr("placeholder", date.format("MM"));
+    $("#time-search-d").attr("placeholder", date.format("dd"));
+    $(".stocklist-time-box").hide();
+
     //绑定事件
     var stock_detail = this;
     $(".stocklist-select").comboSelect({
         comboClass: "combo-select stocklist-combo"
     });
-    $(".stocklist-select").change(function(){
-        stock.changeStock($(this).val());
+    $(".search-stock").click(function(){
+        var year = $("#time-search-y").val();
+        var month = $("#time-search-M").val();
+        var date = $("#time-search-d").val();
+        var start_time = "";
+        if(year != ""){
+            if(month != ""){
+                if(date != ""){
+                    start_time = year + "-" + month + "-" + date;
+                }
+                start_time = year + "-" + month + "-01";
+            }
+            start_time = year + "-01-01";
+        }
+        stock.changeStock($(".stocklist-select").val(), start_time);
     });
 
     $(".graph-type-selector").click(function(){
@@ -31,7 +50,44 @@ StockDetail.prototype.init = function(){
             $(this).addClass("current");
             $("#" + stock_detail.graph_type).removeClass("current");
             stock_detail.graph_type = new_type;
-            stock_detail.updateGraph();
+            var year = $("#time-search-y").val();
+            var month = $("#time-search-M").val();
+            var date = $("#time-search-d").val();
+            var start_time = "";
+            if(year != ""){
+                if(month != ""){
+                    if(date != ""){
+                        start_time = year + "-" + month + "-" + date;
+                    }
+                    start_time = year + "-" + month + "-01";
+                }
+                start_time = year + "-01-01";
+            }
+            stock_detail.updateGraph(start_time);
+        }
+    });
+    $(".search-box-tip-change").click(function(){
+        switch($(this).attr("data")){
+            case "code":
+                $(".search-box-tip").html('代码<div class="triangle-right-bottom"></div>');
+                $(".stocklist-select-box").show();
+                $(".stocklist-time-box").hide();
+                break;
+            case "time":
+                $(".search-box-tip").html('时间<div class="triangle-right-bottom"></div>');
+                $(".stocklist-select-box").hide();
+                $(".stocklist-time-box").show();
+                break;
+        }
+    });
+    $("#time-search-y").change(function(){
+        if($(this).val().length == 4){
+            $("#time-search-M").focus();
+        }
+    });
+    $("#time-search-M").change(function(){
+        if($(this).val().length == 2){
+            $("#time-search-d").focus();
         }
     });
 };

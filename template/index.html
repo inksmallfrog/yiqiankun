@@ -87,10 +87,21 @@
           <div class="stockdetail-panel">
               <!--搜索-->
               <div class="search-box">
+                  <a href="#" data-toggle="dropdown" class="search-box-tip">代码<div class="triangle-right-bottom"></div></a>
+                  <ul class="dropdown-menu search-box-tip-dropdown">
+                      <div class="up-triangle"></div>
+                      <li><a href="#" class="search-box-tip-change" data="code">代码</a></li>
+                      <li><a href="#" class="search-box-tip-change" data="time">时间</a></li>
+                  </ul>
                   <div class="stocklist-select-box">
                       <select class="stocklist-select"><option value="" disabled selected>请输入股票名称或代码</option></select>
                   </div>
-                  <button>搜索</button>
+                  <div class="stocklist-time-box">
+                      <input id="time-search-y" placeholder=""><span class="spliter">-</span>
+                      <input id="time-search-M" placeholder=""><span class="spliter">-</span>
+                      <input id="time-search-d" placeholder="">
+                  </div>
+                  <button class="search-stock">搜索</button>
               </div>
               <!--END搜索-->
 

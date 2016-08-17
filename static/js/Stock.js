@@ -34,10 +34,10 @@ Stock.prototype.update = function(){
     }
 };
 
-Stock.prototype.changeStock = function(id){
+Stock.prototype.changeStock = function(id, start_time){
     this.id = id;
     this.updateDetail();
-    this.updateGraphData();
+    this.updateGraphData(start_time);
     stock_detail.show();
 };
 
@@ -112,18 +112,19 @@ Stock.prototype.readDetail = function(data){
     this.buy5vol = data.buy5vol;
 };
 
-Stock.prototype.updateGraphData = function(){
+Stock.prototype.updateGraphData = function(start_time){
     /*
      * 发送股票图表请求
      * 发送目标：{root}/getstockgraphdata
      * 发送方式：post
      * 发送内容：id => 股票id
      *           type => 图表类型('graph-daily' => 日线; 'graph-weekly' => 周线; 'graph-monthly' => 月线'; 'graph-time' => '分时图')
+     *           start_time => 起始时间(格式"yyyy-MM-dd", 为空则代表默认时间)
      * 返回格式：二维数组
      * 期待返回内容：[时间，开盘，收盘，最低，最高]
      */
     var stock = this;
-    $.post("../getstockgraphdata", {id: this.id, type: stock_detail.graph_type}, function(data){
+    $.post("../getstockgraphdata", {id: this.id, type: stock_detail.graph_type, start_time: start_time}, function(data){
         stock.readGraphData(data);
         stock_detail.updateGraph();
     });
