@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Created by inksmallfrog on 2016/8/30.
  */
 function loadStockList(){
@@ -15,7 +15,7 @@ function loadStockList(){
     $.post("../stocklist", {}, function(data){
         eval("stock_list = " + data);
         initPage();
-    })
+    });
     /*stock_list = [
     {
         "id": "000001SH",

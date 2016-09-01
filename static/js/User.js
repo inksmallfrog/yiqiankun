@@ -74,10 +74,9 @@ User.prototype.login = function(){
      *             ："user_id_error" => 用户名错误
      *             ："pwd_error" => 密码错误
      */
-    console.log("aaa");
     $.post("../login", {id: id, pwd: $("#pwd_input").val()},
         function (data, status) {
-            if(data == 'succeed'){
+            if(data.data == 'succeed'){
                 $.cookie("user_id", id, {expires: 14});
                 user.id = id;
                 window.location.reload();

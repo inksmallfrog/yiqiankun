@@ -61,7 +61,6 @@ Account.prototype.loadAccount = function(type){
                    }
                }
                else{
-                   alert("no data");
                    $(".has-no-account-" + type).show();
                    $(".has-account-" + type).hide();
                    if(user.logged){
