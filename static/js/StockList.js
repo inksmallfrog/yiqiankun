@@ -1,4 +1,4 @@
-/**
+﻿/**
  * Created by inksmallfrog on 2016/8/30.
  */
 function loadStockList(){
@@ -12,11 +12,11 @@ function loadStockList(){
      *                  code => 股票代码
      *                  name => 股票名
      */
-    /*$.post("../stocklist", {}, function(data){
+    $.post("../stocklist", {}, function(data){
         eval("stock_list = " + data);
         initPage();
-    })*/
-    stock_list = [
+    })
+    /*stock_list = [
     {
         "id": "000001SH",
         "code": "000001",
@@ -33,5 +33,5 @@ function loadStockList(){
         "name": "小蛙制杖"
     }
 ];
-    initPage();
+    initPage();*/
 }
