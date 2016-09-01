@@ -170,8 +170,7 @@ Trade.prototype.updateStock = function(){
      * 期待返回内容：code => 股票代码
      *               name => 股票名称
      *               price => 股票现价
-     *               min => 跌停价
-     *               max => 涨停价
+     *               close => 昨收价
      *               vol_has => 该用户当前持有量
      *               bid5 => 卖5价
      *               bid5vol => 卖5量
@@ -199,69 +198,69 @@ Trade.prototype.updateStock = function(){
         $(".stock-info-name").html(stock.name);
         var trade_price_input = $(".trade-price-input");
         if(trade_price_input.val() == ""){
-            trade_price_input.val((stock.price).toFixed(2));
+            trade_price_input.val((Number(stock.price)).toFixed(2));
         };
-        $(".trade-price-tip-min").children().children(".price").html((stock.min).toFixed(2));
-        $(".trade-price-tip-max").children().children(".price").html((stock.max).toFixed(2));
+        $(".trade-price-tip-min").children().children(".price").html((Math.round(Number(data.close) * 0.9 * 100) / 100.0).toFixed(2));
+        $(".trade-price-tip-max").children().children(".price").html((Math.round(Number(data.close) * 1.1 * 100) / 100.0).toFixed(2));
         $(".trade-counts-has").html("持有" + stock.vol_has + "股");
 
         var bid5 = $("#bid5");
         var bid5_price = bid5.children(".price");
-        bid5_price.html((stock.bid5).toFixed(2));
+        bid5_price.html((Number(stock.bid5)).toFixed(2));
         setTextColor(bid5_price, stock.bid5, stock.price);
         bid5.children(".counts").html(stock.bid5vol);
 
         var bid4 = $("#bid4");
         var bid4_price = bid4.children(".price");
-        bid4_price.html((stock.bid4).toFixed(2));
+        bid4_price.html((Number(stock.bid4)).toFixed(2));
         setTextColor(bid4_price, stock.bid4, stock.price);
         bid4.children(".counts").html(stock.bid4vol);
 
         var bid3 = $("#bid3");
         var bid3_price = bid3.children(".price");
-        bid3_price.html((stock.bid3).toFixed(2));
+        bid3_price.html((Number(stock.bid3)).toFixed(2));
         setTextColor(bid3_price, stock.bid3, stock.price);
         bid3.children(".counts").html(stock.bid3vol);
 
         var bid2 = $("#bid2");
         var bid2_price = bid2.children(".price");
-        bid2_price.html((stock.bid2).toFixed(2));
+        bid2_price.html((Number(stock.bid2)).toFixed(2));
         setTextColor(bid2_price, stock.bid2, stock.price);
         bid2.children(".counts").html(stock.bid2vol);
 
         var bid1 = $("#bid1");
         var bid1_price = bid1.children(".price");
-        bid1_price.html((stock.bid1).toFixed(2));
+        bid1_price.html((Number(stock.bid1)).toFixed(2));
         setTextColor(bid1_price, stock.bid1, stock.price);
         bid1.children(".counts").html(stock.bid1vol);
 
         var buy5 = $("#buy5");
         var buy5_price = buy5.children(".price");
-        buy5_price.html((stock.buy5).toFixed(2));
+        buy5_price.html((Number(stock.buy5)).toFixed(2));
         setTextColor(buy5_price, stock.buy5, stock.price);
         buy5.children(".counts").html(stock.buy5vol);
 
         var buy4 = $("#buy4");
         var buy4_price = buy4.children(".price");
-        buy4_price.html((stock.buy4).toFixed(2));
+        buy4_price.html((Number(stock.buy4)).toFixed(2));
         setTextColor(buy4_price, stock.buy4, stock.price);
         buy4.children(".counts").html(stock.buy4vol);
 
         var buy3 = $("#buy3");
         var buy3_price = buy3.children(".price");
-        buy3_price.html((stock.buy3).toFixed(2));
+        buy3_price.html((Number(stock.buy3)).toFixed(2));
         setTextColor(buy3_price, stock.buy3, stock.price);
         buy3.children(".counts").html(stock.buy3vol);
 
         var buy2 = $("#buy2");
         var buy2_price = buy2.children(".price");
-        buy2_price.html((stock.buy2).toFixed(2));
+        buy2_price.html((Number(stock.buy2)).toFixed(2));
         setTextColor(buy2_price, stock.buy2, stock.price);
         buy2.children(".counts").html(stock.buy2vol);
 
         var buy1 = $("#buy1");
         var buy1_price = buy1.children(".price");
-        buy1_price.html((stock.buy1).toFixed(2));
+        buy1_price.html((Number(stock.buy1)).toFixed(2));
         setTextColor(buy1_price, stock.buy1, stock.price);
         buy1.children(".counts").html(stock.buy1vol);
     }, "json");

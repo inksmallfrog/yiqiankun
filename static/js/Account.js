@@ -50,9 +50,9 @@ Account.prototype.loadAccount = function(type){
          * 期待返回内容：对应的账号id
          */
         $.post("../getuseraccount", {user_id: user.id, type: type}, function(data){
-               if(data != ""){
+               if(typeof data.error == "undefined"){
                     account.has_account[type] = true;
-                   $("#account-" + type + "-id").html(data);
+                   $("#account-" + type + "-id").html(data.id);
                    $(".has-account-" + type).show();
                    $(".has-no-account-" + type).hide();
                    $("#account-type-" + type).addClass("disable");
@@ -61,6 +61,7 @@ Account.prototype.loadAccount = function(type){
                    }
                }
                else{
+                   alert("no data");
                    $(".has-no-account-" + type).show();
                    $(".has-account-" + type).hide();
                    if(user.logged){
@@ -68,7 +69,7 @@ Account.prototype.loadAccount = function(type){
                    }
                }
                account.loadAccountData(type);
-        })
+        }, "json")
     }
 };
 
@@ -209,7 +210,7 @@ Account.prototype.quitAccount = function(type){
 
 Account.prototype.show = function(){
     strategies.hide();
-  $(".accounts-panel").removeClass("hide-right");
+    $(".accounts-panel").removeClass("hide-right");
 };
 
 Account.prototype.hide = function(){

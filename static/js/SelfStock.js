@@ -116,18 +116,11 @@ SelfStock.prototype.addStock = function(id, code, name){
      *           id => 股票id
      * 返回：无
      */
-    $.post("../selfstockadd", {user_id: account.id, id: id});
-
+    $.post("../selfstockadd", {user_id: user.id, id: id}, function(data){
+        //alert(data);
+    });
     this.stock_list.push({id:id, code:code, name:name});
-    var content = selfstock_eachstock.replace(/\{id}/g, id).replace(/\{code}/g, code).replace(/\{name}/g, name);
-    var selfstock = this;
-    $(".selfstock-last-item").before(content);
-    $(".selfstock-item-detail").click(function(){
-        stock_detail.changeStock($(this).attr("data"));
-    });
-    $(".delete-icon").click(function(){
-        selfstock.deleteStock($(this).data);
-    });
+    this.bindData();
 };
 
 //删除自选股
@@ -140,7 +133,7 @@ SelfStock.prototype.deleteStock = function(id, node){
      *           id => 股票id
      * 返回：无
      */
-    $.post("../selfstockdelete", {user_id: account.id, id: id});
+    $.post("../selfstockdelete", {user_id: user.id, id: id});
 
     for(var i = 0; i < this.stock_list.length; ++i){
         if(this.stock_list[i].id == id){

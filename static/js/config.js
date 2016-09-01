@@ -82,10 +82,10 @@ Date.prototype.format =function(format)
 //设置颜色
 setTextColor = function(node, price, close){
     var is_up = 0;
-    if(price > close){
+    if(Number(price) > Number(close)){
         is_up = 1;
     }
-    else if(price < close){
+    else if(Number(price) < Number(close)){
         is_up = -1;
     }
     node.removeClass("price-up");

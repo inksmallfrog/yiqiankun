@@ -103,17 +103,17 @@ User.prototype.signup = function(){
      *             ："signup_user_id_error" => 用户名已存在
      *             ："signup_pwd_error" => ？
      */
-    $.post("../signup", {id: id, pwd: $("#singup_pwd_input").val()},
-        function (data, status) {
-            if(data == 'succeed'){
+    $.post("../signup", {id: id, pwd: $("#signup_pwd_input").val()},
+        function (data) {
+            if(data.data == 'succeed'){
                 $.cookie("user_id", id, {expires: 14});
                 user.id = id;
                 window.location.reload();
             }
-            else{
-                $("#" + data).slideDown();
+            else if(data.error == "Invalid username!"){
+                $("#signup_user_id_error").slideDown();
             }
-        });
+        }, "json");
     return false;
 };
 
