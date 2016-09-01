@@ -30,6 +30,7 @@ Stock.prototype.update = function(){
     this.updateDetail();
 
     if(stock_detail.graph_type == "graph-time"){
+        alert("b");
         this.updateGraphData();
     }
 };
@@ -130,15 +131,14 @@ Stock.prototype.updateGraphData = function(start_time){
      */
     var stock = this;
     $.post("../getstockgraphdata", {id: this.id, type: stock_detail.graph_type, start_time: start_time}, function(data){
-        stock.readGraphData(data);
-        stock_detail.updateGraph();
+        stock.readGraphData(data.data);
+        stock_detail.stock_graph.drawGraph();
     });
 };
 
 //从数组中获取图表数据
 Stock.prototype.readGraphData = function(raw_data){
-    var data;
-    eval("data = " + raw_data);
+    var data = raw_data;
 
     var categoryData = [];
     var values = [];

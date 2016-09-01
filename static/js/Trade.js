@@ -194,7 +194,6 @@ Trade.prototype.updateStock = function(){
      *               buy1vol => 买1量
      */
     $.post("../tradestockinfo", {user_id: user.id, id: this.stockid}, function(stock){
-        console.log(stock);
         var changed = false;
         if($(".stock-info-code").html() == stock.code){
             changed = true;
