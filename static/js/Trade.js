@@ -194,14 +194,19 @@ Trade.prototype.updateStock = function(){
      *               buy1vol => 买1量
      */
     $.post("../tradestockinfo", {user_id: user.id, id: this.stockid}, function(stock){
+        console.log(stock);
+        var changed = false;
+        if($(".stock-info-code").html() == stock.code){
+            changed = true;
+        }
         $(".stock-info-code").html(stock.code);
         $(".stock-info-name").html(stock.name);
         var trade_price_input = $(".trade-price-input");
-        if(trade_price_input.val() == ""){
+        if(changed){
             trade_price_input.val((Number(stock.price)).toFixed(2));
         };
-        $(".trade-price-tip-min").children().children(".price").html((Math.round(Number(data.close) * 0.9 * 100) / 100.0).toFixed(2));
-        $(".trade-price-tip-max").children().children(".price").html((Math.round(Number(data.close) * 1.1 * 100) / 100.0).toFixed(2));
+        $(".trade-price-tip-min").children().children(".price").html((Math.round(Number(stock.close) * 0.9 * 100) / 100.0).toFixed(2));
+        $(".trade-price-tip-max").children().children(".price").html((Math.round(Number(stock.close) * 1.1 * 100) / 100.0).toFixed(2));
         $(".trade-counts-has").html("持有" + stock.vol_has + "股");
 
         var bid5 = $("#bid5");
@@ -306,7 +311,7 @@ Trade.prototype.trade = function(action){
     if(this.trade_target == "future"){
         option = $("#trade-future-container-right").children("focus").attr("data");
     }
-    $.post("../trade", {user_id: user.id, id: stock.id, price: $(".trade-price-input").val(), counts: $(".trade-counts-input").val(), action: action, type: trade.trade_target, option: option});
+    $.post("../trade", {user_id: user.id, id: trade.stockid, price: $(".trade-price-input").val(), counts: $(".trade-counts-input").val(), action: action, type: trade.trade_target, option: option});
 };
 
 Trade.prototype.buy = function(){

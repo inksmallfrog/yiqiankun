@@ -13,6 +13,7 @@ User.prototype.init = function(){
     this.id = $.cookie("user_id");
     if(typeof this.id != 'undefined'){
         this.logged = true;
+        $(".trade").show();
     }
     this.toLogin();
 

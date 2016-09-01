@@ -13,7 +13,7 @@ function loadStockList(){
      *                  name => 股票名
      */
     $.post("../stocklist", {}, function(data){
-        eval("stock_list = " + data);
+        stock_list = data.data;
         initPage();
     });
     /*stock_list = [
