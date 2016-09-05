@@ -91,6 +91,13 @@ Strategies.prototype.init = function(){
         var formfactor_value = $("#formfactor-" + $(this).attr("data"));
         formfactor_value.value = $(this).html();
     });
+
+    //==============TODO!=================
+    /*
+     * 为执行按钮添加事件
+     */
+
+    //==============EMD TODO!=================
 };
 
 Strategies.prototype.build_content = function(){
@@ -126,4 +133,23 @@ Strategies.prototype.hide = function(){
 Strategies.prototype.show = function(){
     account.hide();
     $(".strategies-panel").removeClass("hide-right");
+};
+
+
+Strategies.prototype.sendStrategy = function(){
+    //=============TODO!==================
+    /*
+     * 为策略添加POST请求
+     */
+
+    //=============END TODO!==================
+};
+
+Strategies.prototype.buildResult = function(data){
+    //=============TODO!==================
+    /*
+     * 根据返回数据显示结果内容
+     */
+
+    //=============END TODO!==================
 };

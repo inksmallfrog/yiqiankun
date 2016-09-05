@@ -1,1 +1,1 @@
-succeed
+{"data": "succeed"}

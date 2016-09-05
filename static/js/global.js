@@ -17,10 +17,17 @@ var account;
 var strategies;
 
 $(document).ready(function(){
+    /*
+     * 若未完成搜索栏动态加载股票列表功能
+     * 则加载页面前加载所有股票列表
+     */
     loadStockList();
+
+    //初始化页面
+    initPage();
 });
 
-function initPage(){
+function initPage() {
     user = new User();
     stock = new Stock();
 
@@ -50,7 +57,7 @@ function initPage(){
         stock_detail.stock_graph.stock_chart.resize();
     });
 
-    stock.changeStock("000001SH");
+    stock.changeStock(INIT_STOCK_ID);
     setInterval("update()", UPDATE_TIMEOUT);
 }
 

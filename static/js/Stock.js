@@ -30,7 +30,6 @@ Stock.prototype.update = function(){
     this.updateDetail();
 
     if(stock_detail.graph_type == "graph-time"){
-        alert("b");
         this.updateGraphData();
     }
 };
@@ -40,6 +39,7 @@ Stock.prototype.changeStock = function(id, start_time){
     this.updateDetail();
     this.updateGraphData(start_time);
     stock_detail.show();
+    trade.changeStock(id);
 };
 
 Stock.prototype.updateDetail = function(){
@@ -68,8 +68,7 @@ Stock.prototype.updateDetail = function(){
     var stock = this;
     $.post("../getstockdata", {id: this.id}, function(data){
         stock.readDetail(data);
-        stock_detail.update();
-        trade.update();
+        stock_detail.bindData();
     }, "json");
 };
 
@@ -84,7 +83,7 @@ Stock.prototype.readDetail = function(data){
     this.close = Number(data.close);
     this.high = Number(data.high);
     this.low = Number(data.low);
-    if(this.price == 0){
+    if (this.price == 0) {
         this.price = this.close;
         this.open = this.close;
         this.high = this.close;
@@ -131,14 +130,15 @@ Stock.prototype.updateGraphData = function(start_time){
      */
     var stock = this;
     $.post("../getstockgraphdata", {id: this.id, type: stock_detail.graph_type, start_time: start_time}, function(data){
-        stock.readGraphData(data.data);
+        stock.readGraphData(data['data']);
         stock_detail.stock_graph.drawGraph();
     });
 };
 
 //从数组中获取图表数据
 Stock.prototype.readGraphData = function(raw_data){
-    var data = raw_data;
+    var data;
+    data = raw_data;
 
     var categoryData = [];
     var values = [];

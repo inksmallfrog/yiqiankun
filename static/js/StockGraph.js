@@ -17,8 +17,9 @@ StockGraph.prototype.update = function(){
 //绘制图表
 StockGraph.prototype.drawGraph = function(){
     var option;
-    if(stock_detail.graph_type != "graph_time"){
-        option={
+    if (stock_detail.graph_type != "graph_time") {
+        option = {
+            animation: false,
         title: {
             text: '',
             left: 0
@@ -132,11 +133,13 @@ StockGraph.prototype.drawGraph = function(){
         ]
     };
     }
-    else{
-        option = {
 
-        }
+    //=================TODO!=====================
+    //分时图配置
+    else {
+        option = {}
     }
+    //=================END TODO!=====================
 
     this.stock_chart.setOption(option);
 };

@@ -11,8 +11,8 @@ SelfStock.prototype.init = function(){
     this.stock_ul = $(".selfstock-list");
     if (user.logged) {
         this.loadList();
-
     } else {
+        //调用模板引导登陆
         this.stock_ul.html(selfstock_unlogged);
     }
 };
@@ -31,7 +31,7 @@ SelfStock.prototype.loadList = function(){
      *             ：name => 股票名称
      */
     $.post("../selfstock", {id: user.id}, function(data){
-                selfstock.stock_list = data.selfstock;
+        selfstock.stock_list = data['selfstock'];
                 selfstock.bindData();
             }, "json")
 };
@@ -43,8 +43,13 @@ SelfStock.prototype.bindData = function(){
     for (var i = 0; i < this.stock_list.length; ++i) {
         content += selfstock_eachstock.replace(/\{id}/g, this.stock_list[i].id).replace(/\{code}/g, this.stock_list[i].code).replace(/\{name}/g, this.stock_list[i].name);
     }
-    content += selfstock_addstock;
 
+    //================TODO!=====================
+    /*
+     * 该处内容为当前的股票搜索框模板加载代码
+     * 修改搜索框时应修改此处内容
+     */
+    content += selfstock_addstock;
     //建立可选股列表
     for(i = 0; i < stock_list.length; ++i){
         var existed = false;
@@ -60,6 +65,9 @@ SelfStock.prototype.bindData = function(){
         content += '<option value="' + stock_list[i].id + '" class="selfstocklist-select-item">' + stock_list[i].name + '(' + stock_list[i].code + ')</option>';
     }
     content += '</select>';
+    //================END TODO!=====================
+
+
     this.stock_ul.html(content);
 
     //绑定事件
@@ -82,6 +90,12 @@ SelfStock.prototype.bindData = function(){
         selfstock.addStock(stockid, stockcode, stockname);
         $(this).parents(".combo-select").focusout();
     });
+
+    //================TODO!=====================
+    /*
+     * 该处内容为当前的股票搜索框初始化代码
+     * 修改搜索框时应修改此处内容
+     */
     $(function(){
         $('.selfstock-select').comboSelect();
         $(".selfstock-select").change(function(){
@@ -102,8 +116,8 @@ SelfStock.prototype.bindData = function(){
             $('.selfstock-select').parents(".combo-select").children('input').focus();
             $(this).parents('li').hide();
         });
-
     });
+    //================END TODO!=====================
 };
 
 //添加自选股
@@ -116,10 +130,10 @@ SelfStock.prototype.addStock = function(id, code, name){
      *           id => 股票id
      * 返回：无
      */
-    $.post("../selfstockadd", {user_id: user.id, id: id}, function(data){
+    $.post("../selfstockadd", {user_id: user.id, id: id}, function (data) {
         //alert(data);
     });
-    this.stock_list.push({id:id, code:code, name:name});
+    this.stock_list.push({id: id, code: code, name: name});
     this.bindData();
 };
 

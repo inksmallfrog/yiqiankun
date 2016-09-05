@@ -77,7 +77,7 @@ User.prototype.login = function(){
      */
     $.post("../login", {id: id, pwd: $("#pwd_input").val()},
         function (data, status) {
-            if(data.data == 'succeed'){
+            if (data.data == 'succeed') {
                 $.cookie("user_id", id, {expires: 14});
                 user.id = id;
                 window.location.reload();
@@ -85,11 +85,11 @@ User.prototype.login = function(){
             else{
                 $("#" + data).slideDown();
             }
-        });
+        }, "json");
     return false;
 };
 
-User.prototype.signup = function(){
+User.prototype.signup = function () {
     var user = this;
     var id = $("#signup_user_id_input").val();
     /*
@@ -105,12 +105,12 @@ User.prototype.signup = function(){
      */
     $.post("../signup", {id: id, pwd: $("#signup_pwd_input").val()},
         function (data) {
-            if(data.data == 'succeed'){
+            if (data.data == 'succeed') {
                 $.cookie("user_id", id, {expires: 14});
                 user.id = id;
                 window.location.reload();
             }
-            else if(data.error == "Invalid username!"){
+            else if (data.error == "Invalid username!") {
                 $("#signup_user_id_error").slideDown();
             }
         }, "json");

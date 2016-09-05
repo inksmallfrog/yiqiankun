@@ -8,12 +8,19 @@ function StockDetail(){
 }
 
 StockDetail.prototype.init = function(){
+    //================TODO!=====================
+    /*
+     * 该处内容为当前的股票搜索框模块生成代码
+     * 修改搜索框时应修改此处内容
+     */
     //建立可查询的股票列表
     var content = stocklist_select;
     for(var i = 0; i < stock_list.length; ++i){
         content +=　'<option value="' + stock_list[i].id + '">' + stock_list[i].name + '(' + stock_list[i].code + ')</option>';
     }
     content += '</select>';
+    //================END TODO!=====================
+
     $(".stocklist-select-box").html(content);
 
     var date = new Date();
@@ -24,9 +31,17 @@ StockDetail.prototype.init = function(){
 
     //绑定事件
     var stock_detail = this;
+
+    //================TODO!=====================
+    /*
+     * 该处内容为当前的股票搜索框模块生成代码
+     * 修改搜索框时应修改此处内容
+     */
     $(".stocklist-select").comboSelect({
         comboClass: "combo-select stocklist-combo"
     });
+    //================END TODO!=====================
+
     $(".search-stock").click(function(){
         var year = $("#time-search-y").val();
         var month = $("#time-search-M").val();
@@ -63,7 +78,7 @@ StockDetail.prototype.init = function(){
                 }
                 start_time = year + "-01-01";
             }
-            stock_detail.updateGraph(start_time);
+            stock.updateGraphData(start_time);
         }
     });
     $(".search-box-tip-change").click(function(){
@@ -90,11 +105,16 @@ StockDetail.prototype.init = function(){
             $("#time-search-d").focus();
         }
     });
+
+    //===============TODO!==================
+    /*
+     * 为添加自选股\移出自选股按钮添加事件
+     */
+
+    //===============END TODO!===============
 };
 
-//股票详情更新
 StockDetail.prototype.update = function(){
-    this.bindData();
 };
 
 StockDetail.prototype.show = function(){
@@ -122,10 +142,10 @@ StockDetail.prototype.bindData = function(){
     $("#low").html(Number(stock.low).toFixed(2));
     $("#min").html(Number(stock.min).toFixed(2));
 
-    this.setBigNumber(stock.vol, "vol");
-    this.setBigNumber(stock.marketvalue, "marketvalue");
-    this.setBigNumber(stock.value, "value");
-    this.setBigNumber(stock.available_marketvalue, "availablemarketvalue");
+    setBigNumber(stock.vol, "vol");
+    setBigNumber(stock.marketvalue, "marketvalue");
+    setBigNumber(stock.value, "value");
+    setBigNumber(stock.available_marketvalue, "availablemarketvalue");
 
     setTextColor($(".detail-price"), stock.price, stock.close);
     setTextColor($(".detail-updown"), stock.price, stock.close);
@@ -136,35 +156,5 @@ StockDetail.prototype.bindData = function(){
     setTextColor($("#min"), stock.min, stock.close);
 };
 
-//更新股票图表
-StockDetail.prototype.updateGraph = function(start_time){
-    stock.updateGraphData(start_time);
-    stock_detail.stock_graph.drawGraph();
-};
 
-//拆分大数字
-StockDetail.prototype.setBigNumber = function(value, text){
-    var unit = "";
-    var base;
-    if(value < 1000){
-        unit = "";
-        base = 1;
-    }
-    if(value > 999 && value < 10000){
-        unit = "千";
-        base = 1000;
-    }
-    else if(value > 9999 && value < 100000000){
-        unit = "万";
-        base = 10000;
-    }
-    else{
-        unit = "亿";
-        base = 100000000;
-    }
-
-    var unit_span = "<span class=\"unit\" id=\"" + text + "-unit\">" + unit + "</span>";
-
-    $("#" + text).html(Number(value / base * 1.00).toFixed(2) + unit_span);
-};
 
