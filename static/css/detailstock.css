@@ -1,7 +1,8 @@
 div.stockdetail-panel{
-    float: left;
-    width: 65%;
-    height: 100%;
+    position: absolute;
+    top:0;
+    left:30%;
+    right:0;
 
     padding: 1% 2%;
 }
@@ -119,8 +120,9 @@ div.stockdetail-panel{
 }
 
 .stockdetail-panel .stockdetail-box{
+    position: relative;
     width: 100%;
-    height: 14%;
+    height: 11vw;
     min-height: 95px;
     margin-bottom: 2%;
 }
@@ -134,24 +136,23 @@ div.stockdetail-panel{
 
 .detail-left .detail-name{
     font-family: "Source Han Sans CN Regular";
-    font-size: 1.74vw;
+    font-size: 1.6vw;
     letter-spacing: 0.1vw;
-    min-height: 28px;
+    height: 28px;
 }
 
 .detail-left .detail-price{
     position: relative;
-    margin: -5% 0;
     font-family: SourceHanSansBold;
     font-size: 3.0vw;
-    min-height: 48px;
+    height: 50%;
+    padding: 4% 0;
 }
 .detail-left .detail-price img{
     position: absolute;
     right: 0;
     top: 1.3vw;
     width: 2vw;
-    margin-top: -4%;
 }
 
 .detail-left .detail-updown{
@@ -201,20 +202,25 @@ div.stockdetail-panel{
     margin-left: 2px;
 
     font-family: "Source Han Sans CN Regular";
-    font-size: 0.2vw;
+    font-size: 0.8vw;
 }
 
 .stockdetail-box .selfstock-selector{
-    float: left;
+    position: absolute;
+    top: 0;
+    right: 2%;
+    width: 3%;
+    text-align: center;
     height: 100%;
     background-color: #fec303;
-    margin-left: 2px;
     padding: 6px 0.5% 0 0.5%;
     font-family: "Source Han Sans CN Regular";
     font-size: 1vw;
     color: white;
-    writing-mode: vertical-lr;
-    letter-spacing: 0.3vw;
+}
+
+.stockdetail-box .selfstock-selector .selfstock-selector-text{
+    margin: 17% 0;
 }
 
 .stockdetail-panel .graph-box{

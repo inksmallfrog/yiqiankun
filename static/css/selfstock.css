@@ -1,8 +1,10 @@
 div.selfstock-panel{
-    float: left;
+    position: absolute;
+    left: 0;
+    right: 0;
     background: url("../assets/background/self_stock_bg.png") no-repeat;
     background-size: 100% 100%;
-    width: 35%;
+    width: 30%;
     height: 100%;
 }
 
