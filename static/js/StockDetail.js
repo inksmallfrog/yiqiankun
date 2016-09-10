@@ -105,13 +105,6 @@ StockDetail.prototype.init = function(){
             $("#time-search-d").focus();
         }
     });
-
-    //===============TODO!==================
-    /*
-     * 为添加自选股\移出自选股按钮添加事件
-     */
-
-    //===============END TODO!===============
 };
 
 StockDetail.prototype.update = function(){
@@ -124,6 +117,25 @@ StockDetail.prototype.show = function(){
 
 //绑定详情数据
 StockDetail.prototype.bindData = function(){
+    var selfstock_selector = $(".selfstock-selector");
+    if(selfstock.inSelfstock(stock.id)){
+        selfstock_selector.html(stock_selector_remove);
+        if(user.logged){
+            selfstock_selector.unbind("click");
+            selfstock_selector.click(function(){selfstock.deleteStock(stock.id);});
+        }
+    }
+    else{
+        selfstock_selector.html(stock_selector_add);
+        if(user.logged){
+            selfstock_selector.unbind("click");
+            selfstock_selector.click(function(){selfstock.addStock(stock.id, stock.code, stock.name);});
+        }
+        else{
+            selfstock_selector.unbind("click");
+            selfstock_selector.click(function(){$(".selfstock-item").children("a").click();});
+        }
+    }
     $(".detail-name").html(stock.name + "(" + stock.code + ")");
     var status = "price_equal";
     if(stock.price > stock.close){

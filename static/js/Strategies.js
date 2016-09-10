@@ -92,12 +92,10 @@ Strategies.prototype.init = function(){
         formfactor_value.value = $(this).html();
     });
 
-    //==============TODO!=================
-    /*
-     * 为执行按钮添加事件
-     */
-
-    //==============EMD TODO!=================
+    $(".strategy-form").submit(function(){
+        strategies.sendStrategy();
+        return false;
+    });
 };
 
 Strategies.prototype.build_content = function(){
@@ -137,18 +135,28 @@ Strategies.prototype.show = function(){
 
 
 Strategies.prototype.sendStrategy = function(){
-    //=============TODO!==================
-    /*
-     * 为策略添加POST请求
-     */
+    $.ajax({
+            cache: true,
+            type: "POST",
+            url:"../strategies",
+            data:$('#strategy-form').serialize(),// 你的formid
+            async: false,
+            error: function(request) {
+                alert("Connection error");
+            },
+            success: function(data) {
+                //==============TODO!=====================
+                //接受请求,请求的数据在data中
 
-    //=============END TODO!==================
+                //==============END TODO!==================
+            }
+        });
 };
 
 Strategies.prototype.buildResult = function(data){
     //=============TODO!==================
     /*
-     * 根据返回数据显示结果内容
+     * 将返回数据套入模板显示结果内容
      */
 
     //=============END TODO!==================

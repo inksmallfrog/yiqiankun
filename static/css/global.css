@@ -45,6 +45,7 @@ div.border{
 
 .hide-right{
     left: 100% !important;
+    right: -100% !important;
 }
 
 @media screen and (max-width: 768px){

@@ -26,6 +26,19 @@ var stocklist_select = '<select class="stocklist-select"><option value="" disabl
 var price_img = '<img id="price-arrow" src="../static/assets/icons/{price_status}.png">';
     //==============END TODO!============
 
+var stock_selector_add = '<div class="selfstock-selector-text">加</div>' +
+                         '<div class="selfstock-selector-text">入</div>' +
+                         '<div class="selfstock-selector-text">自</div>' +
+                         '<div class="selfstock-selector-text">选</div>' +
+                         '<div class="selfstock-selector-text">股</div>' +
+                         '<div class="selfstock-selector-text">+</div>';
+var stock_selector_remove = '<div class="selfstock-selector-text">移</div>' +
+                         '<div class="selfstock-selector-text">出</div>' +
+                         '<div class="selfstock-selector-text">自</div>' +
+                         '<div class="selfstock-selector-text">选</div>' +
+                         '<div class="selfstock-selector-text">股</div>' +
+                         '<div class="selfstock-selector-text">-</div>';
+
 //订单模板
 var order_top = '<li class="orderdetail-top"><span class="order-code">代码</span><span class="order-name">名称</span><span class="order-type">类别</span><span class="order-status">状态</span><span class="order-count">数量</span><span class="order-price">价格</span><span class="order-value">市值</span></li>';
 var order_item = '<li class="orderdetail-item">' +
@@ -59,7 +72,7 @@ var account_market_item = '<li class="account-market-item">' +
 //策略模板
 var strategies_start = '<div class="strategy-titleline"></div>' +
     '<div class="strategy-title">选股策略</div>' +
-    '<form class="strategy-form" onkeydown="if(event.keyCode==13) return false;">';
+    '<form class="strategy-form" id="strategy-form" onkeydown="if(event.keyCode==13) return false;">';
 
 var strategy_start = '<div class="strategy">' +
     '<div class="strategy-box">'+
@@ -95,5 +108,10 @@ var strategy_end =          '</tbody>' +
     '<div class="border-line right_corner"></div>' +
     '</div>' +
     '</div>';
-var strategies_end = '<button type="submit">提交</button>' +
+var strategies_end = '<button id="strategies_input" type="submit">提交</button>' +
     '</form>';
+
+//===================TODO!===================
+//策略执行的返回结果模板
+
+//===================END TODO!=================

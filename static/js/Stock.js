@@ -126,16 +126,22 @@ Stock.prototype.updateGraphData = function(start_time){
      *           type => 图表类型('graph-daily' => 日线; 'graph-weekly' => 周线; 'graph-monthly' => 月线'; 'graph-time' => '分时图')
      *           start_time => 起始时间(格式"yyyy-MM-dd", 为空则代表默认时间)
      * 返回格式：二维数组
-     * 期待返回内容：[时间，开盘，收盘，最低，最高]
+     * 期待返回内容：非实时图：[时间，开盘，收盘，最低，最高]
+     *                 实时图：[时间，价格，成交量]
      */
     var stock = this;
     $.post("../getstockgraphdata", {id: this.id, type: stock_detail.graph_type, start_time: start_time}, function(data){
-        stock.readGraphData(data['data']);
+        if(stock_detail.graph_type != 'graph-time'){
+            stock.readGraphData(data['data']);
+        }
+        else{
+            stock.readGraphtimeData(data['data']);
+        }
         stock_detail.stock_graph.drawGraph();
     });
 };
 
-//从数组中获取图表数据
+//从数组中获取非实时图图表数据
 Stock.prototype.readGraphData = function(raw_data){
     var data;
     data = raw_data;
@@ -149,6 +155,25 @@ Stock.prototype.readGraphData = function(raw_data){
     this.current_data = {
         categoryData: categoryData,
         values: values
+    };
+};
+
+Stock.prototype.readGraphtimeData = function(raw_data){
+    var data;
+    data = raw_data;
+
+    var categoryData = [];
+    var price = [];
+    var vol = [];
+    for (var i = 0; i < data.length; i++) {
+        categoryData.push(data[i].splice(0, 1)[0]);//切除时间
+        price.push(data[i].splice(0, 1)[0]); //剩余属性
+        vol.push(data[i].splice(0, 1)[0]); //剩余属性
+    }
+    this.current_data = {
+        categoryData: categoryData,
+        price: price,
+        vol: vol
     };
 };
 

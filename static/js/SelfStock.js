@@ -135,6 +135,9 @@ SelfStock.prototype.addStock = function(id, code, name){
     });
     this.stock_list.push({id: id, code: code, name: name});
     this.bindData();
+    if(id == stock.id){
+        stock_detail.bindData();
+    }
 };
 
 //删除自选股
@@ -155,8 +158,17 @@ SelfStock.prototype.deleteStock = function(id, node){
             break;
         }
     }
-    if(node != null){
-        node.remove();
-    }
     this.bindData();
+    if(id == stock.id){
+        stock_detail.bindData();
+    }
+};
+
+SelfStock.prototype.inSelfstock = function(id){
+     for(var i = 0; i < this.stock_list.length; ++i) {
+         if (id == this.stock_list[i].id) {
+             return true;
+         }
+     }
+     return false;
 };
